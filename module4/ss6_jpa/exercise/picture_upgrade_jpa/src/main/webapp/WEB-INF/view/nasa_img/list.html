@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bức ảnh của ngày</title>
+
+    <style>
+        #sw {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+<h1>Siver Wolf hãy về với taa !</h1>
+<img id="sw"
+     src="https://editors.dexerto.com/wp-content/uploads/2023/06/08/Is-Silver-Wolf-worth-pulling-Honkai-Star-Rail.jpg">
+<table>
+    <tr>
+        <td>
+            <input type="hidden" id="likeCount" value='0'>
+            <button type="button" onclick="likeFunction()" id="btnLike">Like <span id="resultLike"></span></button>
+        </td>
+<!--        <input type="hidden" id="likeCount">-->
+        <td>
+            <input type="hidden" id="dislikeCount" value='0'>
+            <button type="button" onclick="disLikeFunction()" id="btnDislike">Dislike <span id="resultDisLike"></span></button>
+        </td>
+    </tr>
+</table>
+<form th:action="@{/nasa/list}" method="post" th:object="${nasaCreate}">
+    <h2>Author: </h2>
+    <input type="text" th:field="*{author}">
+    <h2>Feedback: </h2>
+    <textarea cols="50" rows="10" th:field="*{feedback}"></textarea>
+    <br>
+    <input type="submit" value="Comment">
+</form>
+
+<table th:each="n:${nasa}" th:object="${n}">
+    <tr>
+        <td>Author: <span th:text="*{author}"></span></td>
+    </tr>
+
+    <tr>
+        <td>Feedback: <span th:text="*{feedback}"></span></td>
+    </tr>
+
+    <tr>
+        <hr>
+    </tr>
+</table>
+
+<script>
+    function likeFunction() {
+        likeCount.value = Number.parseInt(likeCount.value) +1;
+        resultLike.innerHTML = likeCount.value;
+    }
+
+    function disLikeFunction() {
+        dislikeCount.value = Number.parseInt(dislikeCount.value) +1;
+        resultDisLike.innerHTML = dislikeCount.value;
+    }
+</script>
+</body>
+</html>
