@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+            crossorigin="anonymous">
+    <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+            integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+            crossorigin="anonymous"></script>
+    <style type="text/css">
+
+        /* Add some padding to the body */
+        body {
+            padding: 20px;
+        }
+
+        /* Style the form container */
+        #form {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+        }
+
+        /* Style the form elements using Bootstrap classes */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* Style the submit button */
+        #submit-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #submit-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Center the heading */
+        .text-center {
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1 class="text-center">Edit Content</h1>
+<a class="btn btn-primary d-flex align-items-center justify-content-center mt-3" href="/home">
+    <span>Back to Blog List</span>
+</a>
+
+<div id="form">
+    <form th:object="${blog}" action="/edit" method="post">
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" class="form-control" id="author" th:field="*{author}"/>
+        </div>
+        <div class="form-group">
+            <label for="headerOfBlog">Header Of Blog</label>
+            <input type="text" class="form-control" id="headerOfBlog" th:field="*{headerOfBlog}"/>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" cols="10" rows="20" th:field="*{content}"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" style="height: 50px; width: 60%" class="form-select form-control"
+                    required="required" name="cid" th:field="*{category}">
+                <option value="">Choose a category</option>
+                <th:block th:each="c : ${categories}">
+                    <option th:value="${c.id}" th:text="${c.name}"></option>
+                </th:block>
+            </select>
+        </div>
+        <button id="submit-button" class="btn btn-block" type="submit">Save</button>
+    </form>
+</div>
+
+</body>
+</html>
