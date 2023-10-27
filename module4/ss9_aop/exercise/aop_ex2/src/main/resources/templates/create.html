@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    <style>
+
+        body {
+            padding: 20px;
+        }
+
+        #form {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        #submit-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #submit-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Center the heading */
+        .text-center {
+            text-align: center;
+        }
+
+        .custom-button {
+            width: 50%;
+            height: 60px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1 class="text-center">New Book</h1>
+<a class="btn btn-primary d-flex align-items-center justify-content-center mt-3" href="/book">
+    <span>Back to Book List</span>
+</a>
+
+<div id="form">
+    <form th:object="${book}" action="/create" method="post">
+        <input type="hidden" th:field="*{id}" >
+        <div class="form-group">
+            <label for="author">Name Of Book</label>
+            <input type="text" class="form-control" id="author" th:field="*{name}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="headerOfBlog">Quantity</label>
+            <input type="text" class="form-control" id="headerOfBlog" th:field="*{numberOfBook}"/>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col text-center">
+                <button id="submit-button" class="btn btn-block mx-auto custom-button" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
