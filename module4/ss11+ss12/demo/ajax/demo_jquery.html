@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="input" type="text">
+<button id="btn-send" onclick="send()"> Send</button>
+<button id="btn-hide"> Hide</button>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+    function send(){
+        // let val = document.getElementById("input").value;
+        let val =$("#input").val();
+        alert(val);
+    }
+    const hide = function(){
+        $("#btn-send").toggle(2000);
+    }
+
+    $("#btn-hide").click(hide);
+
+
+
+
+</script>
+</body>
+</html>

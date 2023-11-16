@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>List Product</title>
+    <link rel="icon" type="image/x-icon" href="/image/favicon_io/sad.png">
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style_product_index.css">
+    <style>
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .moe {
+            background-color: #28a745;
+            color: white;
+        }
+
+
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            color: #343a40;
+        }
+
+
+        .Btn {
+
+            cursor: pointer;
+        }
+
+
+        .meo {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+
+        .meo:hover {
+            background-color: #e0a800;
+        }
+
+        .farmer {
+            margin-left: 1400px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1 class="text-center">Product List</h1>
+<a class="btn btn-outline-info d-flex align-items-center justify-content-center mt-3" href="/home">
+    <span>Back to HomePage</span>
+</a>
+<hr>
+<a class=" moe btn btn-primary d-flex align-items-center justify-content-center mt-3" href="/product/create">
+    <span>Create New Product</span>
+</a>
+<br/>
+<div class="farmer">
+    <form class="form-inline my-2 my-lg-0 ml-auto">
+        <a href="/cart" class="btn btn-outline-warning my-2 my-sm-0" th:text="${cart.productMap.size()}">View Cart</a>
+    </form>
+</div>
+<br/>
+<div class="display-pro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="row" style="margin-bottom: 20px;">
+                    <div th:each="prodInfo, iterStat : ${products}">
+                        <div th:if="${iterStat.index % 5 == 0}" class="w-75"></div>
+                        <div class="col-md-2 col-sm-4">
+                            <div class="card" style="width: 15rem;">
+                                <img style="border: 1px solid paleturquoise"
+                                     th:src="@{${'/image/productImages/'+prodInfo.imageName}}" class="card-img-top"
+                                     alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${prodInfo.name}"></h5>
+                                    <p class="card-text" th:text="'$' + ${prodInfo.price}"></p>
+                                    <button class="Btn">
+                                        <div class="sign">
+                                            <svg viewBox="0 0 512 512">
+                                                <path d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"></path>
+                                            </svg>
+                                        </div>
+
+                                        <div class="text">
+                                            <a style="color: white"
+                                               th:href="@{/product/add/__${prodInfo.id}__}">Buy
+                                            </a>
+                                        </div>
+                                    </button>
+
+                                    <br/>
+                                    <button class="meo"><a style="color: white"
+                                                           th:href="@{/product/{id}/update(id=${prodInfo.getId()})}">Update
+                                    </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

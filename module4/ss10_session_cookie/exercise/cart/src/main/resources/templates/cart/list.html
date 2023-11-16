@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shopping Cart</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style_cart_list.css" media="screen" title="no title">
+    <link rel="icon" type="image/x-icon" href="/image/favicon_io/clown.png">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <meta name="robots" content="noindex,follow"/>
+</head>
+<body>
+<a class="btn btn-outline-info d-flex align-items-center justify-content-center mt-3" href="/product">
+    <span>Back to Product List</span>
+</a>
+<div class="shopping-cart">
+    <div class="title text-center">
+        Your Shopping Bag
+    </div>
+    <div th:if="${cart !=null && cart.getProductMap().size() > 0}">
+        <div th:each="productMap: ${cart.productMap}">
+            <div class="item">
+                <div class="buttons">
+                    <span class="delete-btn"></span>
+                    <span class="like-btn"></span>
+                </div>
+
+                <div class="image">
+                    <img style="height: 80px; width: 120px"
+                         th:src="@{${'/image/productImages/' + productMap.key.imageName}}" alt=""/>
+                </div>
+
+                <div class="description">
+                    <span th:text="${productMap.key.name}"></span>
+                    <span th:text="'$' + ${productMap.key.price}"></span>
+                </div>
+
+                <div class="quantity">
+                    <button class="plus-btn" type="button" name="button">
+                        <img src="/image/plus.svg" alt=""/>
+                    </button>
+                    <input type="text" name="name" value="1">
+                    <button class="minus-btn" type="button" name="button">
+                        <img src="/image/minus.svg" alt=""/>
+                    </button>
+                </div>
+
+                <div class="total-price" th:text="'$' + ${productMap.key.discount}"></div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="alert alert-warning text-center" role="alert" th:if="${cart ==null || cart.getProductMap().size() == 0}">
+        Cart is Empty !!!
+    </div>
+</div>
+
+<script>
+    $('.minus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
+
+        if (value > 1) {
+            value = value - 1;
+        } else {
+            value = 0;
+        }
+
+        $input.val(value);
+
+    });
+
+    $('.plus-btn').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $input = $this.closest('div').find('input');
+        var value = parseInt($input.val());
+
+        if (value < 100) {
+            value = value + 1;
+        } else {
+            value = 100;
+        }
+
+        $input.val(value);
+    });
+
+    $('.like-btn').on('click', function () {
+        $(this).toggleClass('is-active');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h1>Header</h1>
+<h1>Student Management</h1>
+<!--them mơi-->
+<input id="name" placeholder="Enter name"><br>
+<input id="gender" placeholder="Enter gender"><br>
+<select id="class_id">
+    <option value="1">C03</option>
+    <option value="2">C04</option>
+    <option value="3">C05</option>
+</select><br>
+<button id="btn-save">Save</button>
+<table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Class name</th>
+    </tr>
+    </thead>
+    <tbody id="content">
+
+    </tbody>
+
+</table>
+<button id="btn-more">More</button>
+<h1>Footer</h1>
+<script>
+    let page = 0;
+    $(document).ready(function () {
+        displayPage(page);
+        $("#btn-save").click(function () {
+            add();
+        })
+        $("#btn-more").click(function () {
+            page++;
+            displayPage(page);
+        })
+        // function display() {
+        //     $.ajax({
+        //         contentType: "application/json",
+        //         method :"GET",
+        //         url: "http://localhost:8080/api/students",
+        //         success: function (data) {
+        //             console.log(data);
+        //             let content ="";
+        //             for (let i = 0; i <data.length ; i++) {
+        //                 content +=`<tr>
+        //                                 <td>${i+1}</td>
+        //                                 <td>${data[i].name}</td>
+        //                                 <td>${data[i].gender}</td>
+        //                                 <td>${data[i].classRoom.name}</td>
+        //
+        //                            </tr>`
+        //             }
+        //             $("#content").html(content);
+        //         }
+        //     })
+        // }
+        function displayPage(page) {
+            $.ajax({
+                contentType: "application/json",
+                method: "GET",
+                url: `http://localhost:8080/api/students/pages?page=${page}`,
+                success: function (data) {
+                    console.log(data);
+                    let content = "";
+                    for (let i = 0; i < data.content.length; i++) {
+
+                        content += `<tr>
+                                    <td>${i + 1}</td>
+                                    <td>${data.content[i].name}</td>
+                                    <td>${data.content[i].gender}</td>
+                                    <td>${data.content[i].classRoom.name}</td>
+
+                               </tr>`
+                    }
+                    $("#content").append(content);
+                }
+            })
+        }
+
+        function add() {
+            let newName = $("#name").val();
+            let newGender = $("#gender").val();
+            let newClassId = $("#class_id").val();
+            const newStudent = {
+                name: newName,
+                gender: newGender,
+                classRoom: {
+                    id: newClassId
+                }
+            }
+            $.ajax({
+                contentType: "application/json",
+                method: "POST",
+                dataType: "json",
+                data: JSON.stringify(newStudent),
+                url: "http://localhost:8080/api/students",
+                complete: function (rep) {
+                    console.log(rep.status);
+                    display();
+                }
+
+            })
+        }
+
+    })
+</script>
+</body>
+</html>

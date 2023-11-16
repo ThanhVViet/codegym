@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Write New Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+
+
+        body {
+            padding: 20px;
+        }
+
+        #form {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            box-shadow: none;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        #submit-button {
+            background-color: #3498db; /* Your preferred color */
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        #submit-button:hover {
+            background-color: #2980b9;
+        }
+
+        .text-center {
+            text-align: center;
+            color: #333333; /* Adjust text color */
+        }
+
+        h1 {
+            color: #3498db;
+        }
+
+        .custom-file-input {
+            cursor: pointer;
+        }
+
+        .custom-file-label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .custom-button {
+            width: 50%;
+            height: 60px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<h1 class="text-center">New Product</h1>
+<a class="btn btn-primary d-flex align-items-center justify-content-center mt-3" href="/product">
+    <span>Back to Product List</span>
+</a>
+<br/>
+<div id="form">
+    <form th:object="${productDTO}" th:action="@{/product/create}" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="id" th:field="*{id}">
+        <div class="row">
+
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label for="author">Name Product</label>
+                    <input type="text" class="form-control" id="author" th:field="*{name}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="headerOfBlog">Price</label>
+                    <input type="text" class="form-control" id="headerOfBlog" th:field="*{price}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="discount">Discount</label>
+                    <input type="text" class="form-control" id="discount" th:field="*{discount}"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Description</label>
+                    <textarea class="form-control" id="content" cols="10" rows="10"
+                              th:field="*{description}"></textarea>
+                </div>
+            </div>
+
+            <div class="col-sm-5">
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" style="height: 50px; width: 60%" class="form-control"
+                            required="required" th:field="*{categoryId}">
+                        <option value="">Choose a category</option>
+                        <th:block th:each="c : ${categories}">
+                            <option th:value="${c.id}" th:text="${c.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <div class="form-group">
+
+                    <p>Product Image</p>
+                    <div class="custom-file">
+                        <input id="proImage" name="proImage" type="file" class="custom-file-input"
+                               accept="image/jpeg, image/png, image/avif, image/webp" alt="...">
+                        <label class="custom-file-label" for="proImage">
+                            Choose file
+                        </label>
+                    </div>
+                   <hr>
+                    <div class="form-group">
+                        <img src="#" id="thumbnail" name="thumbnail" height="100px" width="100px"
+                        >
+                    </div>
+                    <input type="hidden" name="imgName" id="imgName" th:value="${productDTO.imageName}">
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col text-center">
+                <button id="submit-button" class="btn btn-block mx-auto custom-button" type="submit">SAVE</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#proImage').change(function () {
+            showImageThumbnail(this);
+        })
+
+    })
+
+    function showImageThumbnail(fileInput) {
+        file = fileInput.files[0];
+        reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#thumbnail').attr('src', e.target.result);
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //         let reader = new FileReader();
+    //         reader.onload = function (e) {
+    //             $('#imgPreview').attr('src', e.target.result).width(100).height(100);
+    //         }
+    //         reader.readAsDataURL(input.files[0])
+    //     }
+    // }
+    //
+    // $('#proImage').change(function () {
+    //     readURL(this);
+    // });
+    // $(".custom-file-input").on("change", function () {
+    //     let fileName = $(this).val().split("1|").pop();
+    //     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    // });
+</script>
+</body>
+</html>

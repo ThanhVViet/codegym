@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style_index.css}">
+    <link rel="stylesheet" href="/css/style_header.css">
+    <link rel="stylesheet" href="/css/ionicons.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/image/favicon_io/star.png">
+
+</head>
+<body>
+<header th:include="/fragments/header :: header"></header>
+<div class="all">
+    <div class="card" style="width: 18rem;">
+        <img th:src="@{/image/1.png}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Click to show all Product</p>
+            <a href="/home/product" class="btn btn-primary">Go to Product</a>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <img src="/image/Product.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">Click to show all Category</p>
+            <a href="/home/category" class="btn btn-primary">Go to Category 1</a>
+           <hr>
+            <a href="/home/test" class="btn btn-primary">Go to Category 2</a>
+        </div>
+    </div>
+</div>
+<hr>
+<footer th:replace="/fragments/footer :: footer"></footer>
+</body>
+</html>
