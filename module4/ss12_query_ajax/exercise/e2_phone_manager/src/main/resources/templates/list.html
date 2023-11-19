@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>List Smartphone</title>
+    <style>
+        table th:last-child {
+            width: 15%;
+        }
+    </style>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.0/css/bootstrap.min.css">
+    <script src="/webjars/jquery/dist/jquery.min.js"></script>
+    <script src="/webjars/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-6">
+        <h1 class="ms-5">Smartphone List</h1>
+    </div>
+    <div class="col-6 d-flex justify-content-end align-items-center">
+        <button class="btn btn-primary h-80 me-5" data-bs-toggle="modal" data-bs-target="#formModal">Add New</button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Producer</th>
+        <th>Model</th>
+        <th>Price</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="s: ${smartphones}">
+        <td th:text="${s.producer}"></td>
+        <td th:text="${s.model}"></td>
+        <td th:text="${s.price}"></td>
+        <td>
+            <button th:data-id="${s.id}" th:data-producer="${s.producer}" th:data-model="${s.model}" th:data-price="${s.price}"
+                    class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#formModal">Edit</button>
+            <button th:onclick="smartPhoneId.value=[[${s.id}]]" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div class="modal fade" id="formModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <input type="hidden" name="id">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Form SmartPhone</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Producer</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="producer">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Model</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="model">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" name="price">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button onclick="addNewSmartPhone()" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <input type="hidden" id="smartPhoneId">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Delete SmartPhone</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete these Records?</p>
+                <p class="text-warning"><small>This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button onclick="deleteSmartPhone()" type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/webjars/bootstrap/5.3.0/js/bootstrap.bundle.js"></script>
+<script>
+    function addNewSmartPhone() {
+        $.ajax({
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            data: JSON.stringify($('form').serializeJSON()),
+            url: "/api/v1/smartphones",
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+
+    function deleteSmartPhone(){
+        $.ajax({
+            type: "DELETE",
+            url: `/api/v1/smartphones/${smartPhoneId.value}`,
+            success: function () {
+                location.reload();
+            }
+        });
+    }
+
+    $(".edit").click(function () {
+        $("input[name='id']").val($(this).data("id"));
+        $("input[name='producer']").val($(this).data("producer"));
+        $("input[name='model']").val($(this).data("model"));
+        $("input[name='price']").val($(this).data("price"));
+    });
+</script>
+</body>
+</html>

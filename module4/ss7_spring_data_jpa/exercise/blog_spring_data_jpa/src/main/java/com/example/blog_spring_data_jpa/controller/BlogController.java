@@ -33,13 +33,12 @@ public class BlogController {
         this.categoryService = categoryService;
     }
 
-    //    @GetMapping("/home")
+//        @GetMapping("/home")
 //    public String showHome(Model model) {
 //        return list(model, 1, "author", "asc");
 //    }
-//
-//
-//    @GetMapping("/page/{pageNumber}")
+
+    //    @GetMapping("/page/{pageNumber}")
 //    public String list(
 //            Model model,
 //            @PathVariable("pageNumber") int currentPage,
@@ -61,35 +60,37 @@ public class BlogController {
 //        model.addAttribute("reverseSortDir", reverseSortDir);
 //        return "index";
 //    }
-    @GetMapping("/home")
-    public String showList(@PageableDefault(page = 0, size = 5, sort = "author", direction = Sort.Direction.ASC) Pageable pageable,
-                           @RequestParam(defaultValue = "", required = false) String searchName,
-                           @RequestParam(defaultValue = "0", required = false) int key,
-//                           @RequestParam(defaultValue = "", required = false) Integer key,
-                           Model model) {
-        Page<Blog> blogs;
-        if (key == 0) {
-            blogs = blogService.findAll(pageable, searchName);
-        } else {
-            blogs = blogService.getBlogByCat(pageable, key);
-        }
-        List<Category> categories = categoryService.findAll();
-        model.addAttribute("categories", categories);
-        model.addAttribute("key", key);
-        model.addAttribute("blogs", blogs);
-        model.addAttribute("searchName", searchName);
-        return "index";
-    }
 
-
-    //    @GetMapping("/home")
-//    public String list(Model model) {
-//        List<Blog> blogList = blogService.findAll();
-//        model.addAttribute("blogs", blogList);
+    //main
+//    @GetMapping("/home")
+//    public String showList(@PageableDefault(page = 0, size = 5, sort = "author", direction = Sort.Direction.ASC) Pageable pageable,
+//                           @RequestParam(defaultValue = "", required = false) String searchName,
+//                           @RequestParam(defaultValue = "0", required = false) int key,
+////                           @RequestParam(defaultValue = "", required = false) Integer key,
+//                           Model model) {
+//        Page<Blog> blogs;
+//        if (key == 0) {
+//            blogs = blogService.findAll(pageable, searchName);
+//        } else {
+//            blogs = blogService.getBlogByCat(pageable, key);
+//        }
 //        List<Category> categories = categoryService.findAll();
 //        model.addAttribute("categories", categories);
+//        model.addAttribute("key", key);
+//        model.addAttribute("blogs", blogs);
+//        model.addAttribute("searchName", searchName);
 //        return "index";
 //    }
+
+
+    @GetMapping("/home")
+    public String viewHomePage(Model model, @Param("input") String input) {
+        List<Blog> blogList = blogService.findAll(input);
+        model.addAttribute("blogs", blogList);
+        List<Category> categories = categoryService.findAll();
+        model.addAttribute("categories", categories);
+        return "index";
+    }
 //    @GetMapping("/page/{pageNumber}")
 //    public String list(@PageableDefault(page = 0, size = 5) Pageable pageable,
 //                       Model model,

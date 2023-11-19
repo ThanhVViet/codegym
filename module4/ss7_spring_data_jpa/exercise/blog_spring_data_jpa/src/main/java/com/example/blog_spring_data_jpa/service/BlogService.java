@@ -34,21 +34,24 @@ public class BlogService implements IBlogService {
 //    }
 
     @Override
-    public List<Blog> findAll() {
-        return iBlogRepository.findAll();
+    public List<Blog> findAll(String keyword) {
+        if(keyword != null){
+            return iBlogRepository.findKeyWord(keyword);
+        }
+       return iBlogRepository.findAll();
     }
 
 
     @Override
     public Page<Blog> findAll(Pageable pageable, String searchName) {
-        return iBlogRepository.findBlogByHeaderOfBlogContaining(pageable, searchName);
+        return iBlogRepository.findBlogByHeaderOfBlogContainingIgnoreCase(pageable, searchName);
     }
 
     @Override
     public Page<Blog> findAllPage(int pageNumber, String sortField, String sortDirection) {
 //        Sort sort = Sort.by("sortField");
 //        sort = sortDirection.equals("asc") ? sort.ascending() : sort.descending();
-        Pageable pageable = PageRequest.of(pageNumber - 1,5, sortDirection.equals("asc") ? Sort.by(sortField).ascending()
+        Pageable pageable = PageRequest.of(pageNumber - 1, 5, sortDirection.equals("asc") ? Sort.by(sortField).ascending()
                 : Sort.by(sortField).descending());
         return iBlogRepository.findAll(pageable);
     }
@@ -79,6 +82,6 @@ public class BlogService implements IBlogService {
 
     @Override
     public Page<Blog> getBlogByCat(Pageable pageable, int id) {
-        return iBlogRepository.getBlogByCat(pageable,id);
+        return iBlogRepository.getBlogByCat(pageable, id);
     }
 }

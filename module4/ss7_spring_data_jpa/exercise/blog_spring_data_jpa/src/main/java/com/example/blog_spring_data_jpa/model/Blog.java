@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 
 @Entity
+@Table(name = "blog")
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +13,7 @@ public class Blog {
     @Column(name = "header_of_blog")
     private String headerOfBlog;
     private String content;
+    private Double price;
 
     @ManyToOne(cascade = {
             CascadeType.PERSIST, CascadeType.MERGE,
@@ -36,6 +38,15 @@ public class Blog {
         this.category = category;
     }
 
+    public Blog(Integer id, String author, String headerOfBlog, String content, Double price, Category category) {
+        this.id = id;
+        this.author = author;
+        this.headerOfBlog = headerOfBlog;
+        this.content = content;
+        this.price = price;
+        this.category = category;
+    }
+
     public Blog() {
     }
 
@@ -52,6 +63,14 @@ public class Blog {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public int getId() {
