@@ -1,12 +1,20 @@
 package com.example.cart.dto;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class ProductDTO {
     private Long id;
+    @NotNull(message = "Khong duoc de trong !!!")
+    @Size(min=8, message = "độ dài tối thiểu là 8")
     private String name;
 //    private byte[] image;
     private String imageName;
+    @NotNull(message = "Khong duoc de trong !!!")
     private String description;
+    @NotNull(message = "Khong duoc de trong !!!")
     private Long price;
+    @NotNull(message = "Khong duoc de trong !!!")
     private Short discount;
     private Long categoryId;
 

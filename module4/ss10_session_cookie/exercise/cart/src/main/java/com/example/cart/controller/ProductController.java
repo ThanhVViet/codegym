@@ -5,14 +5,18 @@ import com.example.cart.dto.ProductDTO;
 import com.example.cart.model.Product;
 import com.example.cart.service.ICategoryService;
 import com.example.cart.service.IProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,6 +50,12 @@ public class ProductController {
         this.iCategoryService = iCategoryService;
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder data) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        data.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
     @GetMapping("")
     public String homePage(@SessionAttribute(value = "cart", required = false) CartDTO cartDTO, Model model) {
 
@@ -72,9 +82,18 @@ public class ProductController {
 //            imageUUID = imgName;
 //        }
     @PostMapping("/create")
-    public String createProduct(@ModelAttribute("productDTO") ProductDTO productDTO
+    public String createProduct(@Valid @ModelAttribute("productDTO") ProductDTO productDTO,
+                                BindingResult bindingResult,
+            Model model
             , @RequestParam("proImage") MultipartFile file
     ) throws IOException {
+
+        // form validation
+        if(bindingResult.hasErrors()){
+            model.addAttribute("categories", iCategoryService.findAll());
+            return "product/create";
+        }
+
 
         Product product = new Product();
         product.setId(productDTO.getId());

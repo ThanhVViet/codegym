@@ -11,30 +11,52 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" type="image/x-icon" href="/image/favicon_io/clown.png">
     <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/webjars/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+    <style>
+        .content{
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 <h3 class="text-center">List blog</h3>
 <section>
     <a href="/list">Show Category</a>
 </section>
+
 <br/>
+
 <section>
     <div class="add">
         <a class="btn btn-info" href="/create"> Thêm mới</a>
     </div>
-    <form action="/home" class="search-container" method="get">
-        <input th:value="${searchName}" name="searchName" type="text" id="search-bar" placeholder="Search ...">
+<!--    <form action="/home" class="search-container" method="get">-->
+<!--        <input th:value="${searchName}" name="searchName" type="text" id="search-bar" placeholder="Search ...">-->
+<!--        <input class="btn btn-outline-success" type="submit" value="Search">-->
+<!--        <input class="btn btn-outline-danger" type="button" onclick="clearFilter()" value="Clear">-->
+<!--    </form>-->
+
+    <form action="/page/1" class="search-container" method="get">
+        <input type="hidden" name="sortField" th:value="${sortField}">
+        <input type="hidden" name="sortDir" th:value="${sortDir}">
+        <input th:value="${keyword}" name="keyword" type="text" id="search-bar" placeholder="Search ...">
         <input class="btn btn-outline-success" type="submit" value="Search">
+        <input class="btn btn-outline-danger" type="button" onclick="clearFilter()" value="Clear">
     </form>
+
 </section>
+<div class="col-6 d-flex justify-content-end align-items-center">
+    <button class="btn btn-primary h-80 me-5" data-bs-toggle="modal" data-bs-target="#addnewModal">Add New</button>
+</div>
 <br/>
-<section>
-    <form id="content">
-        <input type="text" name="input" class="input nal" id="search-input" required>
-        <button type="reset" class="search" id="search-btn"></button>
-        <input class="btn btn-outline-success" type="submit" id="btn-search" value="Search">
-    </form>
-</section>
+<!--<section>-->
+<!--    <form id="content">-->
+<!--        <input type="text" name="input" class="input nal" id="search-input" required>-->
+<!--        <button type="reset" class="search" id="search-btn"></button>-->
+<!--        <input class="btn btn-outline-success" type="submit" id="btn-search" value="Search">-->
+<!--    </form>-->
+<!--</section>-->
 <br/>
 <section>
     <form id="fi" action="/home" class="search-container" method="get">
@@ -61,6 +83,7 @@
             <th class="text-center">STT</th>
             <th class="text-center">Author</th>
             <th class="text-center">Header Of Blog</th>
+            <th class="text-center">Price</th>
             <th class="text-center">Category</th>
             <th class="text-center">Edit</th>
             <th class="text-center">Delete</th>
@@ -72,11 +95,19 @@
             <td th:text="${rowStat.count}"></td>
             <td th:text="${blog.author}"></td>
             <td th:text="${blog.headerOfBlog}"></td>
+            <td th:text="${blog.price}"></td>
             <td th:text="${blog.category.name}"></td>
 
 
-            <td class="text-center"><a class="btn btn-info"
-                                       th:href="@{{id}/update(id=${blog.getId()})}">Edit</a></td>
+            <!--            <td class="text-center"><a class="btn btn-info"-->
+            <!--                                       th:href="@{{id}/update(id=${blog.getId()})}">Edit</a></td>-->
+            <td class="text-center">
+                <button th:data-id="${blog.id}" th:data-author="${blog.author}" th:data-content="${blog.content}"
+                        th:data-header="${blog.headerOfBlog}" th:data-category="${blog.category.id}"
+                        th:data-price="${blog.price}"
+                        class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#formModal">Edit
+                </button>
+            </td>
 
             <td class="text-center"><a th:onclick="|del(${blog.id})|" class="btn btn-danger" data-bs-toggle="modal"
                                        data-bs-target="#deleteModal">
@@ -84,17 +115,24 @@
             </a></td>
 
 
-            <td class="text-center"><a class="btn btn-primary"
-                                       th:href="@{{id}/detail(id=${blog.getId()})}">Detail</a></td>
+            <!--            <td class="text-center"><a class="btn btn-primary"-->
+            <!--                                       th:href="@{{id}/detail(id=${blog.getId()})}">Detail</a></td>-->
+
+            <td class="text-center">
+
+            </td>
         </tr>
         </tbody>
     </div>
 </table>
 <div class="alert alert-warning text-center" role="alert" th:if="${blogs.isEmpty()}">
-    Blog is Empty !!!
+    Cann't find what you're looking for !!! Please try agian !!
 </div>
 
+
 <br/>
+
+<script src="/webjars/bootstrap/5.3.0/js/bootstrap.bundle.js"></script>
 
 
 
@@ -106,43 +144,45 @@
 <!--</div>-->
 
 
-
-
 <!--//yt-->
-<!--<div>&nbsp;</div>-->
-<!--<div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>-->
-<!--<div>&nbsp;</div>-->
-<!--<div>-->
-<!--    Total Item: [[${totalItem}]] - Page: [[${currentPage}]] of [[${totalPage}]]-->
-<!--    &nbsp;&nbsp;-->
+<div class="content">
 
-<!--    <a th:if="${currentPage > 1}" th:href="@{'/page/1?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">First</a>-->
-<!--    <span th:unless="${currentPage > 1}">First</span>-->
+    <div>&nbsp;</div>
+    <div><i>Sorted by [[${sortField}]] in [[${sortDir}]] order</i></div>
+    <div>&nbsp;</div>
+    <div>
+        Total Item: [[${totalItem}]] - Page: [[${currentPage}]] of [[${totalPage}]]
+        &nbsp;&nbsp;
 
-<!--    &nbsp;&nbsp;-->
+        <a th:if="${currentPage > 1}" th:href="@{'/page/1?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword='+ keyword: ''} }">First</a>
+        <span th:unless="${currentPage > 1}">First</span>
 
-<!--    <a th:if="${currentPage > 1}"-->
-<!--       th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} }">Previous</a>-->
-<!--    <span th:unless="${currentPage > 1}">Previous</span>-->
+        &nbsp;&nbsp;
 
-<!--    &nbsp;&nbsp;-->
-<!--    <span th:each="i: ${#numbers.sequence(1, totalPage)}">-->
-<!--    <a th:if="${currentPage != i}"-->
-<!--       th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} }">[[${i}]]</a>-->
-<!--    <span th:unless="${currentPage != i}">[[${i}]]</span>-->
-<!--    &nbsp;-->
-<!--    </span>-->
+        <a th:if="${currentPage > 1}"
+           th:href="@{'/page/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword='+ keyword: ''} }">Previous</a>
+        <span th:unless="${currentPage > 1}">Previous</span>
 
-<!--    &nbsp;&nbsp;-->
-<!--    <a th:if="${currentPage < totalPage}"-->
-<!--       th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>-->
-<!--    <span th:unless="${currentPage < totalPage}">Next</span>-->
+        &nbsp;&nbsp;
+        <span th:each="i: ${#numbers.sequence(1, totalPage)}">
+    <a th:if="${currentPage != i}"
+       th:href="@{'/page/' + ${i} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword='+ keyword: ''} }">[[${i}]]</a>
+    <span th:unless="${currentPage != i}">[[${i}]]</span>
+    &nbsp;
+    </span>
 
-<!--    &nbsp;&nbsp;-->
-<!--    <a th:if="${currentPage < totalPage}"-->
-<!--       th:href="@{'/page/' + ${totalPage} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>-->
-<!--    <span th:unless="${currentPage < totalPage}">Last</span>-->
-<!--</div>-->
+        &nbsp;&nbsp;
+        <a th:if="${currentPage < totalPage}"
+           th:href="@{'/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}  + ${keyword != null ? '&keyword='+ keyword: ''}} ">Next</a>
+        <span th:unless="${currentPage < totalPage}">Next</span>
+
+        &nbsp;&nbsp;
+        <a th:if="${currentPage < totalPage}"
+           th:href="@{'/page/' + ${totalPage} + '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir} + ${keyword != null ? '&keyword='+ keyword: ''}}">Last</a>
+        <span th:unless="${currentPage < totalPage}">Last</span>
+    </div>
+</div>
+
 
 <div class="notify">
     <div th:if="${success}">
@@ -174,7 +214,69 @@
 </div>
 
 
+<div class="modal fade" id="addnewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form method="post" action="/create">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Add New Blog</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Author</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="author">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Content</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="content">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Header</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" name="headerOfBlog">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Category</label>
+                        <div class="col-sm-10">
+                            <select id="category" style="height: 50px; width: 60%" class="form-select form-control"
+                                    required="required" name="category">
+                                <option value="">Choose a category</option>
+                                <th:block th:each="c : ${categories}">
+                                    <option th:value="${c.id}" th:text="${c.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Price</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" name="price">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
 <script>
+    function clearFilter(){
+        window.location = '/home';
+    }
 
     function change() {
         document.getElementById("fi").submit();
@@ -187,11 +289,31 @@
     function fncSearch(val) {
         document.getElementById("aSearch").href = "/blog?q=" + val;
     }
+
+    $(".edit").click(function () {
+
+        $("input[name='id']").val($(this).data("id"));
+        $("input[name='author']").val($(this).data("author"));
+        $("input[name='content']").val($(this).data("content"));
+        $("input[name='header']").val($(this).data("header"));
+        $("input[name='category']").val($(this).data("category"));
+        $("input[name='price']").val($(this).data("price"));
+    });
+
+
+    $(".detail").click(function () {
+
+        $("input[name='id']").val($(this).data("id"));
+        $("input[name='author']").val($(this).data("author"));
+        $("input[name='content']").val($(this).data("content"));
+        $("input[name='header']").val($(this).data("header"));
+        $("input[name='category']").val($(this).data("category"));
+        $("input[name='price']").val($(this).data("price"));
+    });
 </script>
 
 <script src="/js/script_index.js">
 </script>
-
 
 <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"

@@ -79,6 +79,11 @@
 <h1 class="text-center">New Product</h1>
 <a class="btn btn-primary d-flex align-items-center justify-content-center mt-3" href="/product">
     <span>Back to Product List</span>
+    <style>
+        .has-error{
+            color:red;
+        }
+    </style>
 </a>
 <br/>
 <div id="form">
@@ -91,6 +96,11 @@
                 <div class="form-group">
                     <label for="author">Name Product</label>
                     <input type="text" class="form-control" id="author" th:field="*{name}"/>
+                    <div th:if="${#fields.hasErrors('name')}" class="has-error">
+                        <ul>
+                            <li th:each="e: ${#fields.errors('name')}" th:text="${e}"></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="form-group">

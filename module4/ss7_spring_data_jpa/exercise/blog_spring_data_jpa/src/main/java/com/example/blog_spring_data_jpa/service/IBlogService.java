@@ -7,10 +7,13 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface IBlogService {
+    List<Blog> findAll();
     List<Blog> findAll(String keyword);
+    Page<Blog> findAll(Pageable pageable);
     Page<Blog> findAll(Pageable pageable, String searchName);
-    Page<Blog> findAllPage(int pageNumber, String sortField, String sortDirection);
+    Page<Blog> findAllPage(int pageNumber, String sortField, String sortDirection, String keyword);
     boolean add(Blog blog);
+    Blog save(Blog blog);
     Blog update(Blog blog);
     void deleteBlogById(int id);
 

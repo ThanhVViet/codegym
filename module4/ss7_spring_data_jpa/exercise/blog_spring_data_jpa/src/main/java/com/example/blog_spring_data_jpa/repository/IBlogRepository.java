@@ -14,8 +14,11 @@ public interface IBlogRepository extends JpaRepository<Blog, Integer> {
     Page<Blog> getBlogByCat(Pageable pageable,@Param("id") int key);
 
     Page<Blog> findBlogByHeaderOfBlogContainingIgnoreCase(Pageable pageable, String searchName);
-    @Query("SELECT p FROM Blog p WHERE p.author LIKE %?1%"
-            + " OR p.content LIKE %?1%"
-            + " OR CONCAT(p.price, '') LIKE %?1%")
+    @Query("SELECT p FROM Blog p WHERE CONCAT(p.author, ' ', p.content, ' ', p.headerOfBlog, ' ', p.price) LIKE %?1%")
+
     List<Blog> findKeyWord(String keyword);
+
+    @Query("SELECT p FROM Blog p WHERE CONCAT(p.author, ' ', p.content, ' ', p.headerOfBlog, ' ', p.price) LIKE %?1%")
+
+    Page<Blog> search(Pageable pageable,String keyword);
 }

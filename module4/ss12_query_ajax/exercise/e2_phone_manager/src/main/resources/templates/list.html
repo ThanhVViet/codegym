@@ -37,7 +37,7 @@
         <td th:text="${s.model}"></td>
         <td th:text="${s.price}"></td>
         <td>
-            <button th:data-id="${s.id}" th:data-producer="${s.producer}" th:data-model="${s.model}" th:data-price="${s.price}"
+            <button th:data-id="${s.id}" th:data-producer="${s.producer}" th:data-m="${s.model}" th:data-price="${s.price}"
                     class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#formModal">Edit</button>
             <button th:onclick="smartPhoneId.value=[[${s.id}]]" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
         </td>
@@ -136,7 +136,7 @@
     $(".edit").click(function () {
         $("input[name='id']").val($(this).data("id"));
         $("input[name='producer']").val($(this).data("producer"));
-        $("input[name='model']").val($(this).data("model"));
+        $("input[name='model']").val($(this).data("m"));
         $("input[name='price']").val($(this).data("price"));
     });
 </script>
