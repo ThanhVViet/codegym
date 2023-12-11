@@ -16,7 +16,7 @@ class App extends Component<{}, AppComponentState> {
   }
 
   addNote = () => {
-    const inputValue = this.inputRef.current?.value;
+    const inputValue = this.inputRef.current?.value; // lấy giá trị đầu vào nếu có thì gán vào inputValue ko thì về undefined mà ko gay ra loi
     if (inputValue) {
       this.setState(preState => {
             const newList = [...preState.list, inputValue];
