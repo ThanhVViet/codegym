@@ -1,0 +1,37 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "HaiTT",
+      "gender": 0,
+      "age": 18,
+      "languages": [
+        "Java",
+        "C#"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "HaiTT",
+      "gender": 0,
+      "age": 18,
+      "languages": [
+        "Java",
+        "C#"
+      ],
+      "classroom": {}
+    },
+    {
+      "name": "HaiTT1",
+      "gender": "1",
+      "age": 18,
+      "languages": [
+        "C#",
+        "JAVA",
+        "ReactJS"
+      ],
+      "id": 3
+    }
+  ],
+  "classrooms": []
+}
