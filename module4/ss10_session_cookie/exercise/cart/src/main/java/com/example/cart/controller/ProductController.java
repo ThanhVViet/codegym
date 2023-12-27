@@ -73,14 +73,6 @@ public class ProductController {
         return modelAndView;
     }
 
-    //        String imageUUID;
-//        if (!file.isEmpty()) {
-//            imageUUID = file.getOriginalFilename();
-//            Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
-//            Files.write(fileNameAndPath, file.getBytes());
-//        } else {
-//            imageUUID = imgName;
-//        }
     @PostMapping("/create")
     public String createProduct(@Valid @ModelAttribute("productDTO") ProductDTO productDTO,
                                 BindingResult bindingResult,

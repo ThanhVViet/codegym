@@ -1,0 +1,58 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "HaiTT",
+      "gender": 0,
+      "age": 18,
+      "languages": [
+        "Java",
+        "C#"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "HaiTT",
+      "gender": 0,
+      "age": 18,
+      "languages": [
+        "Java",
+        "C#"
+      ],
+      "classroom": {}
+    },
+    {
+      "name": "HaiTT1",
+      "gender": "1",
+      "age": 18,
+      "languages": [
+        "C#",
+        "JAVA",
+        "ReactJS"
+      ],
+      "id": 3
+    },
+    {
+      "name": "TienNVT",
+      "gender": 0,
+      "age": 19,
+      "languages": [
+        "C#",
+        "JAVA",
+        "ReactJS"
+      ],
+      "id": 4
+    },
+    {
+      "name": "HaiTT",
+      "gender": 0,
+      "age": 20,
+      "languages": [
+        "JAVA",
+        "C#"
+      ],
+      "id": 5
+    }
+  ],
+  "classrooms": []
+}
