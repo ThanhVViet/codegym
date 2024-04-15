@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập vào độ dài của mảng: ")
+    } while (n <= 0 || n > 10)
+    let arr = new Array(n);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = prompt("Nhập vào phần tử thứ " + i)
+    }
+    let size = arr.length;
+    arr.sort(function (a, b) {
+        return (b - a)
+    });
+    // for (let i = 0; i < size  ; i++)
+    //     for (let j = 0; j < size ; j++) {
+    //         if (arr[j] < arr[j + 1]) {
+    //             let temp = arr[j];
+    //             arr[j] = arr[j + 1];
+    //             arr[j + 1] = temp;
+    //         }
+    //     }
+    console.log(arr); // 87 76 45 2 12
+</script>
+</body>
+</html>

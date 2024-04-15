@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let MyDate = function (day, month, year) {
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        // getter
+        this.getDay = function () {
+            return this.day;
+        }
+        this.getMonth = function () {
+            return this.month;
+        }
+        this.getYear = function () {
+            return this.year;
+        }
+        //setter
+        this.setDay = function (day) {
+            this.day = day;
+        }
+        this.setMonth = function (month) {
+            this.month = month;
+        }
+        this.setYear = function (year) {
+            this.year = year;
+        }
+    };
+
+    class MyDate1 {
+        constructor(day, month, year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+
+        getDay() {
+            return this.day;
+        }
+
+        getMonth() {
+            return this.month;
+        }
+
+        getYear() {
+            return this.year;
+        }
+
+        setDay(day) {
+            this.day = day;
+        }
+
+        setMonth(month) {
+            this.month = month;
+        }
+
+        setYear(year) {
+            this.year = year;
+        }
+
+        setDate(ngay, thang, nam) {
+            this.day = ngay;
+            this.month = thang;
+            this.year = nam;
+        }
+
+        toString() {
+            return this.day + "/" + this.month + "/" + this.year;
+        }
+    }
+
+    let date = new MyDate1(2, 2, 2007);
+    console.log(date.day);
+    console.log(date.getDay())
+    date.setDay(23)
+    console.log(date.getDay())
+    date.setDate(12, 4, 2023);
+    console.log(date.toString())
+</script>
+</body>
+</html>

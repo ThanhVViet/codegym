@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai_3</title>
+</head>
+<button onclick="addSTK()">Add</button>
+<p id="result"></p>
+<script>
+    class STK {
+        constructor(MS, type, name, id, date, money) {
+            this.MS = MS;
+            this.type = type;
+            this.name = name;
+            this.id = id;
+            this.date = date;
+            this.money = money;
+        }
+
+        getMS() {
+            return this.MS;
+        }
+
+        getType() {
+            return this.type;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        getDate() {
+            return this.date;
+        }
+
+        getMoney() {
+            return this.money;
+        }
+    }
+
+    let msList = [];
+    let ms1 = new STK("ab", "Tot", "Thanh", 192, 12 / 3 / 2003, 540);
+    let ms2 = new STK("ac", "Tot", "Le", 193, 12 / 6 / 2003, 541);
+    let ms3 = new STK("ad", "Tot", "Viet", 194, 12 / 5 / 2003, 542);
+    msList.push(ms1, ms2, ms3);
+    display(msList);
+
+    function addSTK() {
+        let MS = prompt("Nhập mã sổ");
+        let type = prompt("Nhập loại tiết kiệm: ");
+        let name = prompt("Nhập họ tên khách hàng: ");
+        let id = prompt("Nhập chứng minh nhân dân : ");
+        let date = prompt("Nhập ngày mở sở: ");
+        let money = prompt("Nhập số tiền gửi: ");
+        let newSTK = new STK(MS, type, name, id, date, money);
+        if (msList.push(newSTK)) {
+            alert("Đã thêm thành công")
+        }
+        display(msList);
+    }
+
+    function deleteSTK(index) {
+        let conf = confirm("bạn có muốn xoá nhân viên : " + msList[index].getName())
+        if (conf) {
+            msList.splice(index, 1);
+        }
+        display(msList);
+    }
+
+    function display(list) {
+        let tableString = '<table border="1" style="border-collapse: collapse">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>Mã Sổ</th>\n' +
+            '        <th>Loại tiết kiệm</th>\n' +
+            '        <th>Name</th>\n' +
+            '        <th>Chứng minh nhân dân</th>\n' +
+            '        <th>Ngày mở sổ</th>\n' +
+            '        <th>Số Tiền Gửi</th>\n' +
+            '        <th>Delete</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < list.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + list[i].getMS() + '</td>\n' +
+                '        <td>' + list[i].getType() + '</td>\n' +
+                '        <td>' + list[i].getName() + '</td>\n' +
+                '        <td>' + list[i].getId() + '</td>\n' +
+                '        <td>' + list[i].getDate() + '</td>\n' +
+                '        <td>' + list[i].getMoney() + '</td>\n' +
+                '        <td><button onclick="deleteSTK(' + i + ')">Delete</button></td>\n' +
+                '    </tr>'
+        }
+        tableString += '</table>';
+        document.getElementById("result").innerHTML = tableString;
+    }
+</script>
+</body>
+</html>

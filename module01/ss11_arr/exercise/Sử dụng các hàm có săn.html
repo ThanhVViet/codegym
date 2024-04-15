@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    myColor = ["Red", "Green", "White", "Black"];
+    document.write(myColor.toString());
+    document.write(myColor.join());
+
+    document.write("<br>");
+
+    const num = window.prompt();
+    const str = num.toString();
+    const result = [str[0]];
+
+    for (let x = 1; x < str.length; x++) {
+        if ((str[x - 1] % 2 === 0) && (str[x] % 2 === 0)) {
+            result.push('-', str[x]);
+        } else {
+            result.push(str[x]);
+        }
+    }
+    document.write(result.join(''));
+
+    document.write("<br>");
+
+    let str = 'The Quick Brown Fox';
+    let UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    let result = [];
+
+    for (let x = 0; x < str.length; x++) {
+        if (UPPER.indexOf(str[x]) !== -1) {
+            result.push(str[x].toLowerCase());
+        } else if (LOWER.indexOf(str[x]) !== -1) {
+            result.push(str[x].toUpperCase());
+        } else {
+            result.push(str[x]);
+        }
+    }
+    document.write(result.join(''));
+</script>
+</body>
+</html>

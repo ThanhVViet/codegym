@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mV</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập độ dài của mảng:");
+    } while (n <= 0 || n > 10)
+
+    let arrayA = new Array(n);
+    for (let i = 0; i < arrayA.length; i++) {
+        arrayA[i] = +prompt("Nhập phần tử thứ " + i);
+    }
+    alert(arrayA);
+    let m;
+    do {
+        m = +prompt("Nhập độ dài của mảng:");
+    } while (m <= 0 || m > 10)
+    let arrayB = new Array(m);
+    for (let i = 0; i < arrayB.length; i++) {
+        arrayB[i] = +prompt("Nhập phần tử thứ " + i);
+    }
+    alert(arrayB);
+
+    let arrayC = new Array();
+    for (let i = 0; i < arrayA.length; i++) {
+        let sum = 0;
+        for (let j = 0; j < arrayB.length; j++) {
+            if (arrayA[i] == arrayB[j]) {
+                sum++;
+            } else continue;
+        }
+        if (sum == 0) {
+            arrayC.push(arrayB[j]);
+        }
+    }
+    alert(arrayC);
+</script>
+</body>
+</html>

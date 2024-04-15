@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>May_Tinh_Simple</title>
+  <style>
+    table {
+      border: 10px solid black;
+
+    }
+    .c{
+      background-color: white;
+      width: 50px;
+      height: 50px;
+      margin-left: 13px;
+
+    }
+
+  </style>
+</head>
+<body>
+
+<form style="align-content: center">
+  <table class="cal" style="position: absolute; left: 50% ; top: 50%; transform: translateX(-50%) translateY(-50%)">
+    <tr>
+      <td colspan="4">
+        <input style="width: 300px; height: 50px; font-size: 20px" type="text" id="txt" disabled/>
+      </td>
+    </tr>
+    <tr>
+      <td><button onclick="display(1)" class="c" type="button"> 1 </button></td>
+      <td><button onclick="display(2)" class="c" type="button"> 2 </button></td>
+      <td><button onclick="display(3)" class="c" type="button"> 3 </button></td>
+      <td><button onclick="display('+')" class="c" type="button"> + </button></td>
+    </tr>
+    <tr>
+      <td><button onclick="display(4)" class="c" type="button"> 4 </button></td>
+      <td><button onclick="display(5)" class="c" type="button"> 5 </button></td>
+      <td><button onclick="display(6)" class="c" type="button"> 6 </button></td>
+      <td><button onclick="display('-')" class="c" type="button"> - </button></td>
+    </tr>
+    <tr >
+      <td><button onclick="display(7)" class="c" type="button"> 7 </button></td>
+      <td><button onclick="display(8)" class="c" type="button"> 8 </button></td>
+      <td><button onclick="display(9)"class="c" type="button"> 9 </button></td>
+      <td><button onclick="display('*')" class="c" type="button" > * </button></td>
+    </tr>
+    <tr>
+      <td><button onclick="clear()"class="c" value="C" > C </button></td>
+      <td><button onclick="display(0)" class="c" type="button"> 0 </button></td>
+      <td><button onclick="cal()" class="c" type="button" value="=" > = </button></td>
+      <td><button onclick="display('/')"class="c" type="button"> / </button></td>
+    </tr>
+  </table>
+</form>
+<script>
+  function display(value){
+   document.getElementById("txt").value += value;
+  }
+  function clear(){
+    document.getElementById("txt").value="";
+  }
+  function cal(){
+  var b =  document.getElementById("txt").value;
+  var d = eval(b);
+  document.getElementById("txt").value = d;
+  }
+</script>
+</body>
+</html>

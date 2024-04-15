@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // tạo một đối tượng trực tiếp
+  // let student1 = {
+  //     name:"chanh",
+  //     age: 38,
+  //     address: "Đà Năng",
+  //     study(subject){
+  //         console.log("sinh viên "+ this.name+ " đang học môn "+ subject);
+  //     }
+  // }
+  // let student2 = {
+  //     name:"chanh2",
+  //     age: 38,
+  //     address: "Đà Năng",
+  //     study(subject){
+  //         console.log("sinh viên "+ this.name+ " đang học môn "+ subject);
+  //     }
+  // }
+  // console.log(student1.name);
+  // student1.study("Toán");
+
+  //tạo class
+  class Student{
+    constructor(name,age,address) {
+      this.name =name;
+      this.age=age;
+      this.address= address;
+    }
+    study(subject){
+      console.log("sinh viên "+ this.name+ "đang học môn "+subject)
+    }
+  }
+  // tạo đối tượng
+  let sinhVien1 = new Student("kiệt",23,"ĐN");
+  let sinhVien2 = new Student("Đông", 22,"Qn");
+
+  console.log(sinhVien1.name);
+  sinhVien1.study("JS");
+  sinhVien2.study("Java")
+
+</script>
+</body>
+</html>

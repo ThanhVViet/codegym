@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<script>
+    let count = 0;
+    let arr = "Mèo1 1 méo 2  meo 99 mèo meo"
+    let nameArray = Array.from(arr);
+    for (let i = 0; i < arr.length; i++) {
+        if (nameArray[i] > 0) count++;
+    }
+    document.write(count);
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Sample Screen</h1>
+<input type="text" id="txtValue"/>
+<input type="button" id="btnAdd" value="Add" onclick="add_element_to_array();"/>
+<input type="button" id="btnDisplay" value="Display" onclick="display_array();"/>
+<div id="result"></div>
+<script>
+    //Tạo biến x và khởi tạo bằng 0, x là chỉ số truy cập tới các phần tử trong mảng.
+    let x = 0;
+    let array = Array();
+    // Lấy giá trị từ input-text và gán phần tử ở vị trí x trong mảng mỗi lần hàm add_element_to_array() được gọi
+    //
+    // Tăng giá trị x lên 1
+    //
+    // Hiển thị phần tử vừa được thêm vào mảng
+    //
+    // Gán giá trị rỗng cho input-text
+
+
+    function add_element_to_array() {
+        array[x] = document.getElementById("txtValue").value;
+        alert("Element: " + array[x] + " Added at index " + x);
+        x++;
+        document.getElementById("txtValue ").value = "";
+    }
+
+    // Tạo biến e để lưu thẻ <hr> mỗi lần hiển thị một phần tử thẻ <hr> sử dụng để phân cách các phần tử trong mảng: var e = "<hr/>"
+    //
+    // Dùng vòng lặp for duyệt toàn bộ mảng: for (var i=0; i<array.length; i++)
+    //
+    //   Mỗi lần duyệt lấy giá trị của các phần tử cộng dồn vào biến e. Thêm thẻ <br/> cuối mỗi lần duyệt.
+    //
+    //         Kết thúc lặp. Hiển thị biến e
+    function display_array() {
+        let e = "<hr/>";
+        for (let i = 0; i < array.length; i++) {
+            e += "Element " + i + " = " + array[i] + "<br/>";
+        }
+        document.getElementById("result").innerHTML = e;
+    }
+</script>
+</body>
+</html>

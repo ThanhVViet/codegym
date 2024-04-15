@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3_loop2</title>
+</head>
+<body>
+<script>
+    for ( let i = 0; i <= 7; i++ ){
+        for(let j =0;j <= i; j++){
+            document.write("*")
+        }
+        document.write("<br>")
+    }
+    document.write("<br>")
+
+    for ( let i = 7; i >= 0; i-- ){
+         for(let j =0;j <= i; j++){
+             document.write("*")
+         }
+         document.write("<br>")
+    }
+    document.write("<br>")
+
+    let a = 0;
+    for(let i = 7; i >=0; i--){
+        for (let j =0; j<=i; j++){
+            document.write("&nbsp;&nbsp");
+        }
+        for(let v = 0; v <= a; v++){
+            document.write("*")
+        }
+        document.write("<br>")
+        a++
+    }
+    document.write("<br>")
+
+    let b= 0;
+    for(let i = 0; i <= 7; i++){
+        for (let j =0; j<=i; j++){
+            document.write("&nbsp;&nbsp");
+        }
+        for(let v = 7; v >= b; v--){
+            document.write("*")
+        }
+        document.write("<br>")
+        b++
+    }
+</script>
+</body>
+</html>

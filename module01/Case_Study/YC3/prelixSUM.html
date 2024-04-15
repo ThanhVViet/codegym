@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pS</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập độ dài của mảng:");
+    } while (n <= 0 || n > 10)
+
+    let array = new Array(n);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = +prompt("Nhập phần tử thứ " + i);
+    }
+    alert(array);
+    function prefixSum(array) {
+        let new_arr = [];
+        for (let i = 0; i < array.length; i++) {
+            new_arr[i] = 0;
+            for (let j = 0; j < i + 1; j++) {
+                new_arr[i] += array[j];
+            }
+        }
+        return new_arr;
+    }
+    alert(prefixSum(array));
+    function calculateSum(arr) {
+        let step = 0;
+
+        return arr.map(item => {
+            step += item;
+            return step
+        })
+    }
+</script>
+</body>
+</html>

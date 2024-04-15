@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập vào dộ dài của mảng: ")
+    } while (n <= 0 || n > 20)
+    let array = new Array(n);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = prompt("Nhập vào phần tử thứ " + i);
+    }
+    alert("Mảng trước khi đảo ngược là  " + array);
+    alert("Mảng sau khi đảo ngược là " + array.reverse());
+</script>
+</body>
+</html>

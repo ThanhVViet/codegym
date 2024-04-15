@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="id" placeholder="Nhập id">
+<input type="text" id="name" placeholder="Nhập tên">
+<input type="text" id="gender" placeholder="Nhập giới tính">
+<button onclick="addEmployee()">Add</button>
+<p id="result"></p>
+<script>
+    class Employee {
+        constructor(id, name, gender) {
+            this.id = id;
+            this.name = name;
+            this.gender = gender;
+        }
+
+        setId(id) {
+            this.id = id;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        setGender(gender) {
+            this.gender = gender;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getGender() {
+            return this.gender;
+        }
+    }
+
+    let employeeList = [];
+    let employee1 = new Employee(1, "Võ Kiệt", "Nam");
+    let employee2 = new Employee(2, "Thanh Việt", "Nam");
+    let employee3 = new Employee(3, "Thanh Ngân", "Nam");
+    employeeList.push(employee1, employee2, employee3);
+    display(employeeList);
+
+    function addEmployee() {
+        let id = document.getElementById("id").value;
+        let name = document.getElementById("name").value;
+        let gender = document.getElementById("gender").value;
+        let newEmployee = new Employee(id, name, gender);
+        employeeList.push(newEmployee);
+        document.getElementById("id").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("gender").value = "";
+        display(employeeList);
+
+    }
+
+    function deleteEmployee(index) {
+        let conf = confirm("bạn có muốn xoá nhân viên : " + employeeList[index].getName())
+        if (conf) {
+            employeeList.splice(index, 1);
+        }
+        display(employeeList);
+    }
+
+    function editEmployee(index) {
+        let editEmployee = prompt("Nhập thông tin cần sửa", employeeList[index].name);
+        if (editEmployee != "") {
+            employeeList[index].name = editEmployee;
+        }
+        display(employeeList);
+    }
+
+    function display(list) {
+        let tableString = '<table border="1" style="border-collapse: collapse">\n' +
+            '    <tr>\n' +
+            '        <th>STT</th>\n' +
+            '        <th>ID</th>\n' +
+            '        <th>Name</th>\n' +
+            '        <th>Gender</th>\n' +
+            '        <th>Edit</th>\n' +
+            '        <th>Delete</th>\n' +
+            '    </tr>';
+        for (let i = 0; i < list.length; i++) {
+            tableString += ' <tr>\n' +
+                '        <td>' + (i + 1) + '</td>\n' +
+                '        <td>' + list[i].getId() + '</td>\n' +
+                '        <td>' + list[i].getName() + '</td>\n' +
+                '        <td>' + list[i].getGender() + '</td>\n' +
+                '        <td><button onclick="editEmployee(' + i + ')">Edit</button></td>\n' +
+                '        <td><button onclick="deleteEmployee(' + i + ')">Delete</button></td>\n' +
+                '    </tr>'
+        }
+        tableString += '</table>';
+        document.getElementById("result").innerHTML = tableString;
+    }
+</script>
+</body>
+</html>

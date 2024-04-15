@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS</title>
+</head>
+<body>
+<script>
+    let salary = +prompt("Enter salary: ");
+    let trueSalary;
+    if (salary == 15) {
+        let a = 20 / 100;
+        alert("Thuế thu nhập là 20%");
+        trueSalary = salary - (salary * (a));
+        alert("Thu nhập ròng là :" + trueSalary);
+    } else if (7 < salary < 15) {
+        let b = 10 / 100;
+        alert("Thuế thu nhập là 10%");
+    } else if (7 < salary) {
+        let c = 5 / 100;
+        alert("Thuế thu nhập là 5%" + c);
+    }
+</script>
+</body>
+</html>

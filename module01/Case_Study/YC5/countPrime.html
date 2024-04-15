@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function isPrime(number) {
+        let flag = true;
+        for (let i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i === 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    function findAndCountPrimeInMatrix() {
+        let row = parseInt(prompt("Input row: "));
+        let column = parseInt(prompt("Input column: "));
+        let matrix = [];
+        let arrPrime = [];
+        let count = 0;
+        for (let i = 0; i < row; i++) {
+            matrix[i] = [];
+            for (let j = 0; j < column; j++) {
+                matrix[i][j] = parseInt(prompt("please input value a[" + i + "][" + j + "]"));
+                if (matrix[i][j] === 1 || matrix[i][j] === 0) {
+                    continue;
+                }
+                if (isPrime(matrix[i][j])) {
+                    arrPrime.push(matrix[i][j]);
+                    count++;
+                }
+            }
+        }
+        alert("Array: " + matrix + "\nPrime array: " + arrPrime + "\nTotal prime of array: " + count);
+    }
+    findAndCountPrimeInMatrix();
+</script>
+</body>
+</html>

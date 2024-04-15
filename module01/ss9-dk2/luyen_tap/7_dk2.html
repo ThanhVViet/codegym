@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7_dk2</title>
+</head>
+<body>
+<script>
+  alert("Phương trình bậc hai có dạng: axˆ2+bx+c =0");
+  let a = prompt("Nhập a:");
+  A = parseFloat(a);
+  let b = prompt("Nhập b:");
+  B = parseFloat(b);
+  let c = prompt("Nhập c:");
+  C = parseFloat(c);
+  let d ;
+  Delta = parseFloat(d);
+  Delta =  B*B - 4*A*C;
+  let k;
+  K = parseFloat(k);
+  K = -B/2*A;
+  let f;
+  F = parseFloat(f);
+  F = (-B + Math.sqrt(Delta)) / 2*A;
+  let h;
+  H = parseFloat(h);
+  H = (-B - Math.sqrt(Delta)) / 2*A;
+  if (A === 0) {
+      if (B === 0 && C === 0)
+          document.write("Phuong trinh co vo so nghiem");
+      else if (B === 0)
+          document.write("Phuong trinh vo nghiem");
+      else
+          document.write("Phuong trinh co nghiem duy nhat la: " + (-C / B).toFixed(1));
+  }
+  if(Delta == 0  ){
+    document.write("Phương trình bậc hai có 1 nghiệm kép " + K.toFixed(1) );
+  }
+  else if( Delta < 0){
+    document.write("Phương trình bậc hai VN ")
+  }
+  else if ( Delta > 0){
+    document.write("Phương trình có 2 nghiệm phân biệt là: " + F.toFixed(1) + " và " + H.toFixed(1));
+  }
+</script>
+</body>
+</html>

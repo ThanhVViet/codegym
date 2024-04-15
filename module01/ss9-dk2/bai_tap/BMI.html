@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+</head>
+<body>
+<form style="align-content: center">
+  <table style="position: absolute; left: 50% ; top: 50%; transform: translateX(-50%) translateY(-50%)" >
+    <tr>
+     <td><label>Hãy nhập cân nặng của bạn:</label></td>
+       <td><input type="text" id="w"/></td>
+    </tr>
+      <tr>
+          <td>Hãy nhập chiều cao của bạn:</td>
+          <td><input type="text" id="h"/></td>
+      </tr>
+      <tr>
+          <td>BMI</td>
+          <td>
+              <input type="tetx" id="b"/>
+          </td>
+      </tr>
+      <tr>
+        <td> <button onclick="Bmi()" type="button">Tính</button></td>
+      </tr>
+      <tr id="ghi" style="margin-bottom: 30px">
+          <td></td>
+      </tr>
+  </table>
+</form>
+<script>
+    function Bmi() {
+        let a = document.getElementById("w").value;
+        let b = document.getElementById("h").value;
+        let A = parseFloat(a);
+        let B = parseFloat(b);
+        let bmi= A / (B * 2);
+        let c = parseFloat(bmi);
+        document.getElementById("b").value= c;
+        if (c < 18)
+            document.getElementById("ghi").innerText="Underweight"
+        else if (c < 25.0)
+            document.getElementById("ghi").innerText="Normal"
+        else if (c < 30.0)
+            document.getElementById("ghi").innerText="Overweight"
+        else
+            document.getElementById("ghi").innerText="Obese"
+    }
+</script>
+
+</body>
+</html>

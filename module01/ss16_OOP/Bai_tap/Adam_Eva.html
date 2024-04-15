@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>A_E</title>
+</head>
+<body>
+<script>
+    class Apple {
+        constructor(weight) {
+            this.weight = weight;
+        }
+
+        isEmpty() {
+            if (this.getWeight() > 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        decrease() {
+            if (this.isEmpty() === false) {
+                this.weight--;
+            }
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        toString() {
+
+        }
+    }
+
+    class Human {
+        constructor(name, gender, weight) {
+            this.name = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        isMale() {
+            if (this.gender === "Male") {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        setGender(gen) {
+            if (gen === true) {
+                this.gender = "Male";
+            } else {
+                this.gender = "Female";
+            }
+        }
+
+        checkApple(apple) {
+            if (apple.isEmpty() === true) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        eat(apple) {
+            apple.decrease();
+            this.weight++;
+        }
+
+        say(str) {
+            console.log(str);
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(str) {
+            this.name = str;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(a) {
+            this.weight = a;
+        }
+    }
+
+    let apple = new Apple(10);
+    let adam = new Human("Adam", "Male", 60);
+    let eva = new Human("Eva", "Female", 45);
+    while (adam.checkApple() === true) {
+        adam.eat(apple);
+        adam.say("Oishi!!!");
+        eva.eat(apple);
+        eva.say("Umeee!!!");
+    }
+    console.log(adam);
+    console.log(eva);
+</script>
+</body>
+</html>

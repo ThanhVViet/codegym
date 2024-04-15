@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<script>
+    let arr = ("Một     con mèo nó trèo cây cau");
+    // bỏ khoảng trắng đầu và cuối
+    arr = arr.replace(/(^\s*)|(\s*$)/gi, "");
+    // chuyển nhiều space thành 1
+    arr = arr.replace(/[ ]{2,}/gi, " ");
+    // bỏ đi dòng mới
+    arr = arr.replace(/\n /, "\n");
+    document.write(arr.split(" ").length);
+</script>
+</body>
+</html>

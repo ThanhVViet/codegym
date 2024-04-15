@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai_2</title>
+</head>
+<body>
+<script>
+    let t1 = +prompt(" Tu so cua phan so 1: ");
+    let m1 = +prompt(" Mau so cua phan so 1: ");
+    let t2 = +prompt(" Tu so cua phan so 2: ");
+    let m2 = +prompt(" Mau so cua phan so 2: ");
+
+    function compare(t1, m1, t2, m2) {
+        if ((t1 * m2) === (t2 * m1)) {
+            alert("Equal");
+        } else {
+            alert("Not equal");
+        }
+    }
+
+    compare(t1, m1, t2, m2);
+</script>
+</body>
+</html>

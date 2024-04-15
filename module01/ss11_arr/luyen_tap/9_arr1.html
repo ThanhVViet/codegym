@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập vào độ dài của mảng: ")
+    } while (n < 10 || n > 10)
+    let arra = new Array(10);
+    for (let i = 0; i < arra.length; i++) {
+        arra[i] = prompt("Nhập vào phần tử thứ " + i)
+    }
+    alert(arra);
+    let arrb = new Array(10);
+    for (let i = 0; i < arrb.length; i++) {
+        arrb[i] = prompt("Nhập vào phần tử thứ " + i)
+    }
+    alert(arrb);
+    let arrc = arra.concat(arrb);
+    alert(arrc);
+</script>
+</body>
+</html>

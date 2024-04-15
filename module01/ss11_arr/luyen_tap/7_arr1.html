@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập vào độ dài của mảng: ")
+    } while (n <= 0 || n > 10)
+    let arr = new Array(n);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = prompt("Nhập vào phần tử thứ " + i)
+    }
+    let V = 5;
+    const removeIndex = arr.findIndex((item) => item == V);
+    arr.splice(removeIndex, 1);
+    alert("Mảng sau khi đã xoá phần tử " + V + " là " + arr);
+</script>
+</body>
+</html>

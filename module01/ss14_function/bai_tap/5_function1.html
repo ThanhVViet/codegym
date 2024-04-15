@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5_function1</title>
+</head>
+<body>
+<script>
+    let stars = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let star = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+    function search(starsName) {
+        for (let i = 0; i <= stars.length; i++) {
+            if (starsName === stars[i]) {
+                stars[i] === star[i];
+                return (star[i]);
+            }
+        }
+        return ("không có trong mảng tên sao")
+    }
+
+    let starsName1 = prompt("Name of the star: ");
+    if (search(starsName1)) {
+        alert(search(starsName1))
+    } else {
+        alert("Không tìm thấy.")
+    }
+</script>
+</script>
+</body>
+</html>

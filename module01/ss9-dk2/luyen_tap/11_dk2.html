@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_DK2</title>
+</head>
+<body>
+<script>
+  let a = prompt(" Hãy nhập tên của bạn: ");
+  let b = prompt(" Hãy nhập mức lương của bạn:");
+  B = parseFloat(b);
+  for( B; B< 0; B++ ){
+      alert("Mời bạn nhập lại !!")
+      let b = prompt(" Hãy nhập lại mức lương của bạn:");
+      if( B > 0) {
+          break;
+      }
+  }
+  let c = prompt(" Số người giảm trừ:");
+  C = parseInt(c);
+  let d;
+  D = parseFloat(d);
+  D = B - C*1600000;
+  let t;
+  T = parseFloat(t);
+  document.write("Chào bạn "+ a );
+  if(D <=4000000)
+    document.write(" ban khong phai nop thue tncn ");
+  else {
+    if (D <= 6000000) {
+      T = (D - 4000000) * 5 / 100;
+      document.write(" ban phai nop thue thu nhap ca nhan :  " + T + " Đ");
+    } else {
+      if (D <= 9000000) {
+        T = (6000000 - 4000000) * 5 / 100 + (D - 6000000) * 10 / 100;
+        document.write(" ban phai nop thue thu nhap ca nhan : " + T + " Đ");
+      } else {
+        if (D <= 14000000) {
+          T = (6000000 - 4000000) * 5 / 100 + (9000000 - 6000000) * 10 / 100 + (D - 9000000) * 15 / 100;
+          document.write(" ban phai nop thue thu nhap ca nhan : " + T + " Đ");
+        } else {
+          if (D <= 24000000) {
+            T = (6000000 - 4000000) * 5 / 100 + (9000000 - 6000000) * 10 / 100 + (14000000 - 9000000) * 15 / 100 + (D - 14000000) * 20 / 100;
+            printf(" ban phai nop thue thu nhap ca nhan : " + T + " Đ");
+          } else {
+            if (D <= 44000000) {
+              T = (6000000 - 4000000) * 5 / 100 + (9000000 - 6000000) * 10 / 100 + (14000000 - 9000000) * 15 / 100 + (24000000 - 14000000) * 20 / 100 + (D - 24000000) * 25 / 100;
+              document.write(" ban phai nop thue thu nhap ca nhan :  " + T + " Đ");
+            } else {
+              if (D <= 84000000) {
+                T = (6000000 - 4000000) * 5 / 100 + (9000000 - 6000000) * 10 / 100 + (14000000 - 9000000) * 15 / 100 + (24000000 - 14000000) * 20 / 100 + (44000000 - 24000000) * 25 / 100 + (D - 44000000) * 30 / 100;
+                document.write(" ban phai nop thue thu nhap ca nhan : " + T + " Đ");
+              } else {
+                T = (6000000 - 4000000) * 5 / 100 + (9000000 - 6000000) * 10 / 100 + (14000000 - 9000000) * 15 / 100 + (24000000 - 14000000) * 20 / 100 + (44000000 - 24000000) * 25 / 100 + (84000000 - 44000000) * 30 / 100 + (D - 84000000) * 35 / 100;
+                document.write(" ban phai nop thue thu nhap ca nhan : " + T + " Đ");
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</script>
+</body>
+</html>

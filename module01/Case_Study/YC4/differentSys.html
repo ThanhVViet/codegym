@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str = prompt("Input a string: ");
+
+    function differentSymbolsNaive(str) {
+        let arrayStr = [];
+        for (let i = 0; i < str.length; i++) {
+            if (arrayStr.includes(str[i])) {
+                continue;
+            }
+            arrayStr.push(str[i])
+        }
+        return arrayStr;
+    }
+
+    alert("String: " + str + "\nDifferent symbols naive(s): " + differentSymbolsNaive(str).length + "\nIt's: " + differentSymbolsNaive(str));
+
+</script>
+</body>
+</html>

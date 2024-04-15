@@ -1,0 +1,20 @@
+h2 {
+    display: block;
+
+    font: bold 4.5em/1.5 Bebas, sans-serif;
+    color: #5CA17C; /*non-webkit fallback*/
+    font-size: 40px;
+    text-transform: uppercase;
+    background-image: linear-gradient(to bottom, #26BDA6, #FF9F65, #DED37E, #26BDA6);
+    background-size: auto 250%;
+    transition: background-position 0.5s;
+    -webkit-background-clip: text; /* chỉ định màu tô của các ký tự của văn bản */
+    -webkit-text-fill-color: transparent;/* hiệu ứng hình ảnh khi đường viền có các vùng trong suốt hoặc các vùng mờ một phần*/
+    line-height: 50px;
+    background-position: 0 100%;
+    text-align: center;
+}
+h2:hover {
+    background-position: 0 0;
+    cursor: pointer;
+}

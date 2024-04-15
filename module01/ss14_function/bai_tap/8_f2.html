@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8_f2</title>
+</head>
+<body>
+<script>
+    function reverse() {
+        let arr = [1, 2, 3]
+        arr.reverse();
+        alert(arr);
+    }
+
+    alert(reverse());
+
+    let array1 = [2, 3, 10, 14];
+
+    function reserve(array1) {
+        let newArr = [];
+        for (let i = array1.length - 1; i >= 0; i--) {
+            newArr.push(array1[i]); // push cái số sô mảng.
+        }
+        return newArr;
+    }
+
+    alert(reserve(array1))
+</script>
+</body>
+</html>

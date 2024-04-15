@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="40a06122-e4aa-45e2-9028-37bfac318048" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../ss9-dk2/bai_tap/Ghep_Anh" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MoWROLw4RFkT8BdVMIuvGa4AII" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="40a06122-e4aa-45e2-9028-37bfac318048" name="Changes" comment="" />
+      <created>1678434407011</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678434407011</updated>
+      <workItem from="1678434408409" duration="7890000" />
+      <workItem from="1678450667079" duration="6102000" />
+      <workItem from="1678456911006" duration="3000" />
+      <workItem from="1678464848696" duration="4480000" />
+      <workItem from="1678500661049" duration="12540000" />
+      <workItem from="1678578261906" duration="9771000" />
+      <workItem from="1678614734787" duration="19446000" />
+      <workItem from="1678673399170" duration="5245000" />
+      <workItem from="1678686412601" duration="2609000" />
+      <workItem from="1678693234084" duration="385000" />
+      <workItem from="1678696687612" duration="4466000" />
+      <workItem from="1678702098568" duration="2000" />
+      <workItem from="1678705015537" duration="2906000" />
+      <workItem from="1678724409034" duration="13000" />
+      <workItem from="1678725404807" duration="114000" />
+      <workItem from="1679484723488" duration="25000" />
+      <workItem from="1679484751077" duration="13000" />
+      <workItem from="1679484774659" duration="62000" />
+      <workItem from="1679484958812" duration="13000" />
+      <workItem from="1679486399280" duration="5000" />
+      <workItem from="1679654802830" duration="6000" />
+      <workItem from="1679659863255" duration="1000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

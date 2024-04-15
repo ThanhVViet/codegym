@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_f2</title>
+</head>
+<body>
+<script>
+  function perimeter(d) {
+    const PI = 3.14;
+    let C = d * PI;
+    return C;
+  }
+
+  let a = prompt("Nhập vào đường kính hình tròn: ")
+  A = parseInt(a);
+  alert("Chu vi của hình tròn với đường kính " + A + " là " + perimeter(A));
+
+  function acreage(d) {
+    const PI = 3.14;
+    let C = (Math.pow(d / 2)) * PI;
+    return C;
+  }
+
+  let a = prompt("Nhập vào đường kính hình tròn: ")
+  A = parseInt(a);
+  alert("Dien tich của hình tròn với đường kính " + A + " là " + acreage(A));
+</script>
+</body>
+</html>

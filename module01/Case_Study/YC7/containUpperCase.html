@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let strInput = prompt('Nhập vào một chuỗi kí tự');
+
+    function Count_uppercase(str) {
+        let count = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === str[i].toUpperCase() && str[i] !== ' ') {
+                count++;
+            }
+        }
+        if (count === 0) {
+            alert('The Strings is not contain upper char');
+        } else {
+            alert('Chuỗi có chứa ' + count + ' ký tự in hoa');
+        }
+    }
+
+    Count_uppercase(strInput);
+</script>
+</body>
+</html>

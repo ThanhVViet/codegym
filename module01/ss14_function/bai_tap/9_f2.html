@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9_f2</title>
+</head>
+<body>
+<script>
+    let count = 0;
+
+    function check2(array, w) {
+        for (let i = 0; i < array.length; i++) {
+            if (w === array[i]) {
+                count++;
+            }
+        }
+        if (count == 0)
+            return -1;
+        else
+            return count;
+
+    }
+
+    let arr = new Array(5);
+    for (let i = 0; i < 5; i++) {
+        arr[i] = prompt("nhập vào ký tự thứ " + i);
+    }
+    let n = prompt("Hãy nhập vào một ký tự bất kỳ: ");
+
+    alert(check2(arr, n));
+</script>
+</body>
+</html>

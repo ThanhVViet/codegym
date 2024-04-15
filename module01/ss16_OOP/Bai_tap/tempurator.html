@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>temporator</title>
+</head>
+<body>
+<script>
+    class Temperature {
+        constructor(c) {
+            this.c = c;
+        }
+
+        get doF() {
+            return (this.c * 1.8) + 32;
+        }
+
+        get kevin() {
+            return this.c + 273.15;
+        }
+    }
+
+    let temperature = new Temperature(25);
+    let f = temperature.doF;
+    let k = temperature.kevin;
+    alert("Độ F là: " + f + "Độ k là: " + k)
+</script>
+</body>
+</html>

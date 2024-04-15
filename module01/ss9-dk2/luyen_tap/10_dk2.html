@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10_dk2</title>
+</head>
+<body>
+<script>
+    let b;
+    B = parseFloat(b);
+    let a = prompt("Nhap vao so dien cua ban (kWh): ");
+    A = parseFloat(a);
+    let bac1=1678, bac2=1734, bac3=2014, bac4=2536, bac5=2834, bac6=2927;
+    if(A<0){
+      document.write("Vui long nhap lai So Dien" + "<br>" + "So dien khong duoc nho hon 0");
+    }else if(A<=50){
+      B=A*bac1;
+      document.write("Ban da dung dien trong khoang 0 - 50 kWh so tien ban phai tra la:  " + B + " VNĐ");
+    }else if(A<=100){
+      B=50*bac1+((A-50)*bac2);
+      document.write("Ban da dung dien trong khoang 51 - 100 kWh so tien ban phai tra la:  " + B+ " VNĐ");
+    }else if(A <=200){
+      B=50*bac1+(50*bac2)+((A-100)*bac3);
+      document.write("Ban da dung dien trong khoang 101 - 200 kWh so tien ban phai tra la:  " + B + " VNĐ");
+    }else if(A<=300){
+      B=50*bac1+(50*bac2)+(100*bac3)+((A-200)*bac4);
+      document.write("Ban da dung dien trong khoang 201 - 300 kWh so tien ban phai tra la:  " + B + " VNĐ");
+    }else if(A<=400){
+      B=50*bac1+(50*bac2)+(100*bac3)+(100*bac4)+((A-300)*bac5);
+      document.write("Ban da dung dien trong khoang 301 - 400 kWh so tien ban phai tra la:  " + B + " VNĐ");
+    }else if(A>400){
+      B=50*bac1+(50*bac2)+(100*bac3)+(100*bac4)+(100*bac5)+((A-400)*bac6);
+      document.write("Ban da dung dien tren 400 kWh so tien ban phai tra la:  " + B + " VNĐ");
+   }
+</script>
+</body>
+</html>

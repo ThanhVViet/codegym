@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SC</title>
+</head>
+<body>
+<form style="align-content: center;position: absolute; left: 50% ; top: 50%; transform: translateX(-50%) translateY(-50%)">
+    <input type="text" id="P" />
+    <button type="button" onclick="songay()">Tính số ngày</button> <br>
+    <p id="ghi">  </p>
+
+</form>
+<script>
+    function songay(){
+        let n = document.getElementById("P").value;
+        let N = parseInt(n);
+        switch(N){
+
+
+            case 2:
+                document.getElementById('ghi').innerText = "Tháng 2 có 28 hoặc 29 ngày !!!"
+                break;
+
+            case 6:
+            case 8:
+            case 10:
+            case 3:
+            case 4:
+                document.getElementById('ghi').innerText = " Tháng   " + N + " có 30 ngày !!!"
+                break;
+
+            case 1:
+            case 12:
+            case 11:
+            case 9:
+            case 7:
+            case 5:
+                document.getElementById('ghi').innerText = "Tháng  " + N + "  có 31 ngày !!!"
+                break;
+
+            default:
+                document.getElementById('ghi').innerText="Bạn cần nhập 1 tháng trong 12 tháng !! Ngu vừa ??"
+        }
+ß
+
+    }
+
+</script>
+
+</body>
+</html>

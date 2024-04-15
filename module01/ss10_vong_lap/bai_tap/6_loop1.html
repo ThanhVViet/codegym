@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6_loop1</title>
+</head>
+<body>
+<script>
+  let count = 0, sum =0;
+  let arr =" ";
+  for (let i=1; ; i++){
+    if(i % 7 == 0){
+      arr += i + " ";
+      sum += i;
+      count++;
+      if(count==30) break;
+    }
+  }
+  document.write(arr+"<br>");
+  document.write("Tổng 30 số đầu tiên chia hết cho 7 là: "+ sum);
+</script>
+</body>
+</html>

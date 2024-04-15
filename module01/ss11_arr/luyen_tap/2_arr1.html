@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập độ dài của mảng:");
+    } while (n <= 0 || n > 10)
+
+    let array = new Array(n);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = +prompt("Nhập phần tử thứ " + i);
+    }
+    alert(array);
+    let max = array[0];
+    let j = 1;
+    for (; j < array.length; j++) {
+        if (max < array[j]) {
+            max = array[j];
+        }
+    }
+    alert("Phần tử lớn nhất của mảng là : " + max + " Vị trí của phần tử đó là: " + (j - 1));
+</script>
+</body>
+</html>

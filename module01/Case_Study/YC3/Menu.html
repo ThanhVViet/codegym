@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+<script>
+    let menu = "Please choose your drink:\n" +
+        "1.Coffee\n" +
+        "2.Orange juice\n" +
+        "3.Carrot juice\n" +
+        "4.Tomato juice\n" +
+        "5.Water\n" +
+        "6.Coconut juice\n" +
+        "7.Exit";
+    let choose;
+    let coffeePrice = 15000;
+    let orangeJuicePrice = 25000;
+    let carrotJuicePrice = 22000;
+    let tomatoJuicePrice = 20000;
+    let waterPrice = 10000;
+    let coconutJuicePrice = 30000;
+    let amount;
+    let total = 0;
+    do {
+        do {
+            choose = prompt(menu);
+            if (!isNaN(Number(choose)) && Number(choose) > 0 && Number(choose) <= 7 && Number.isInteger(parseFloat(choose))) {
+                choose = parseInt(choose);
+                break;
+            }
+            alert("Please choose number in list !!!")
+        } while (true);
+
+        if(choose !== 7){
+            do {
+                amount = prompt("How many are you want to buy ?");
+                if (!isNaN(Number(amount)) && Number(amount) > 0 && Number.isInteger(parseFloat(amount))) {
+                    amount = parseInt(amount);
+                    break;
+                }
+                alert("Please input a number")
+            } while (true);
+        }
+
+        switch (choose) {
+            case 1:
+                total += coffeePrice * amount;
+                break;
+            case 2:
+                total += orangeJuicePrice * amount;
+                break;
+            case 3:
+                total += carrotJuicePrice * amount;
+                break;
+            case 4:
+                total += tomatoJuicePrice * amount;
+                break;
+            case 5:
+                total += waterPrice * amount;
+                break;
+            case 6:
+                total += coconutJuicePrice * amount;
+                break;
+        }
+    } while (choose !== 7);
+    alert("Total :" + total + " VND\nThanks." )
+</script>
+</body>
+</html>

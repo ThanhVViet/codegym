@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // nhập mảng từ bàn phím với độ dài mảng <=20
+    // tìm giá trị lớn nhất trong mảng
+    let n;
+    do {
+        n = +prompt("nhập độ dài của mảng");
+    } while (n <= 0 || n > 20)
+    // nhập giá tri phần tử cho mảng
+    let array = new Array(n);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = +prompt("nhập vào phần tử thứ " + i);
+    }
+    alert(array);
+    // tìm giá trị lớp nhất trong mảng.
+    let max = array[0];
+    let j = 1;
+    for (; j < array.length; j++) {
+        if (max < array[j]) {
+            max = array[j];
+        }
+    }
+    alert("phần tử lớn nhất của mảng là : " + max);
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let inputString = prompt("Input");
+    let result = [];
+    for (let i = 0; i < inputString.length; i++) {
+        if (i==0) {
+            result[i] = inputString[i].toUpperCase();
+        } else {
+            if (inputString[i-1]==" ") {
+                result[i] = inputString[i].toUpperCase();
+            } else {
+                result[i] = inputString[i].toLowerCase();
+            }
+        }
+    }
+    document.write(result.join(""));
+    function checkMaxLength(name){
+        let temp = name.split(" ");
+        let maxIndex = 0;
+        for (let i = 1; i < temp.length; i++) {
+            if (temp[maxIndex].length < temp[i].length){
+                maxIndex = i;
+            }
+        }
+        return temp[maxIndex];
+    }
+</script>
+</body>
+</html>

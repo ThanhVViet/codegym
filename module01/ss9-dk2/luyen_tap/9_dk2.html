@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9_dk2</title>
+</head>
+<body>
+<script>
+  let a = prompt("Nhập cạnh a:");
+  A = parseFloat(a);
+  let b = prompt("Nhập cạnh b:");
+  B = parseFloat(b);
+  let c = prompt("Nhập cạnh c:");
+  C = parseFloat(c);
+  if(A > 0 && B > 0 && C > 0 && A + B > C && A + C > B && B + C > A){
+    document.write("3 cạnh vừa nhập là 3 cạnh của tam giác")
+  }
+  else{
+    document.write("3 cạnh vừa nhập không phải là 3 cạnh của tam giác ")
+  }
+</script>
+</body>
+</html>

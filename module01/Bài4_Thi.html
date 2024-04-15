@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BAI_4</title>
+</head>
+<body>
+<label for="maDienThoai">Mã điện thoại</label>
+<input type="text" id="maDienThoai">
+<label for="ten">Tên</label>
+<input type="text" id="ten">
+<label for="hangSanXuat">Hãng sản xuất</label>
+<input type="text" id="hangSanXuat">
+<label for="gia">Giá</label>
+<input type="number" id="gia">
+<button onclick="addNewPhone()">Add New Phone</button>
+<p id="result"></p>
+<script>
+    class Phone {
+        constructor(maDienThoai, ten, hangSanXuat, gia) {
+            this.maDienThoai = maDienThoai;
+            this.ten = ten;
+            this.hangSanXuat = hangSanXuat;
+            this.gia = gia;
+        }
+
+        getMaDienThoai() {
+            return this.maDienThoai;
+        }
+
+        setMaDienThoai(value) {
+            this.maDienThoai = value;
+        }
+
+        getTen() {
+            return this.ten;
+        }
+
+        setTen(value) {
+            this.ten = value;
+        }
+
+        getHangSanXuat() {
+            return this.hangSanXuat;
+        }
+
+        setHangSanXuat(value) {
+            this.hangSanXuat = value;
+        }
+
+        getGia() {
+            return this.gia;
+        }
+
+        setGia(value) {
+            this.gia = value;
+        }
+
+        toString() {
+            return "Mã điện thoại: " + this.maDienThoai + ", Tên: " + this.ten + ", Nhà sản xuất: " + this.hangSanXuat + ", Giá: " + this.gia;
+        }
+    }
+
+    let phone1 = new Phone(1, "SamSung", "SamSUng", 10000000);
+    let arrPhone = [phone1];
+
+    function display(array) {
+        let str = "<table border='1'>" +
+            "<tr>" +
+            "<th>Mã điện thoại</th>" +
+            "<th>Tên</th>" +
+            "<th>Hãng sản xuất</th>" +
+            "<th>Giá</th>" +
+            "</tr>";
+
+        for (let i = 0; i < array.length; i++) {
+            str += "<tr>" +
+                "<td>" + array[i].getMaDienThoai() + "</td>" +
+                "<td>" + array[i].getTen() + "</td>" +
+                "<td>" + array[i].getHangSanXuat() + "</td>" +
+                "<td>" + array[i].getGia() + "</td>" +
+                "</tr>"
+        }
+        str += "</table>";
+        document.getElementById("result").innerHTML = str;
+    }
+
+    display(arrPhone);
+
+    function addNewPhone() {
+        let maDienThoai = document.getElementById("maDienThoai").value;
+        let ten = document.getElementById("ten").value;
+        let hangSanXuat = document.getElementById("hangSanXuat").value;
+        let gia = document.getElementById("gia").value;
+
+        let phone = new Phone(maDienThoai, ten, hangSanXuat, gia);
+        arrPhone.push(phone);
+        display(arrPhone);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+.c{
+    margin-left: 10px;
+}
+
+  </style>
+</head>
+<body>
+<form>
+  <table style="text-align: center;margin-bottom: 30px">
+    <tr>
+      <td><label style="text-align: center" for="amount">Amount</label><br></td>
+      <td ><label>From Currency</label></td>
+      <td><label>To Currency</label></td>
+    </tr>
+    <tr>
+     <td style="width: 200px"><input type="text" id="amount"></td>
+      <td style="width: 200px"><select style="width: 100px" id="1">
+        <option value="B">VietNam</option>
+        <option value="A">USA</option>
+      </select></td>
+      <td style="width: 200px">
+        <select style="width: 100px" id="2">
+          <option value="A">USA</option>
+          <option value="B">VietNam</option>
+        </select>
+      </td>
+      <td style="width: 200px; "> <button style="background-color: lightblue; width: 100px" type="button" onclick="money()">Convert</button></td>
+    </tr>
+
+  </table>
+    <label style="color: lightcoral; margin-left: 50px" id="result">Result:</label>
+
+</form>
+<script>
+    function money() {
+        let a = document.getElementById("amount").value;
+        let b = document.getElementById("1").value;
+        let c = document.getElementById("2").value;
+        let d;
+        if (b == c) {
+
+         d = a;
+        }
+
+   else if (b == "A" && c == "B"){
+        d = a * 23000 + "VND";
+    }
+    else if(b == "B" && c == "A"){
+        d= a /23000 +  "$";
+    }
+        document.getElementById('result').innerText="Result:"  +d;
+
+    }
+</script>
+
+</body>
+</html>

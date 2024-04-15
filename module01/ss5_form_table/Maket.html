@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ooOoo</title>
+    <style>
+        .jk{
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bb {line-height: 0px; }
+        hr.new2 {
+            border-top: 1px dashed mediumaquamarine;}
+        .element {
+            margin-bottom: 25px;
+       }
+        div.radio-box{
+            display: block;
+            margin: 0 auto;
+        }
+       .radio-box label{
+            display: inline-block;
+           text-align: center;
+        }
+       .radio-box input{
+           display: block;
+           margin: 0px auto;
+       }
+       .table1{
+           margin-bottom: 25px;
+       }
+       .table1 tbody tr td{
+           border: none;
+       }
+       .radio-box tr:nth-child( 3) {background-color: #f2f2f2;}
+        .radio-box tr:nth-child( 1) {background-color: #f2f2f2;}
+        .radio-box tr:hover {background-color: coral;}
+        .jk table,th,td{
+            padding: 7px;
+            border: 1px solid;
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body>
+<form>
+  <h2 class="bb">Market Research Servey </h2>
+  <p style="font-size: small">Please take a few moments to complete this satisfaction survey.</p>
+    <hr class="new2">
+
+    <label  style="font-weight: bold;" for="age range">What is your age range ?</label> <br>
+    <select class="element" id="age range" name="age range" style="width: 500px; height: 25px">
+        <option selected="selected" value="18-24">18-24</option>
+        <option value="25-34">25-34</option>
+        <option value="35-50">35-50</option>
+        <option  value="50+">50+</option>
+    </select > <br>
+    <label style="font-weight: bold" for="salary">What is your yearly income range? </label><br>
+    <select class="element" id="salary" name="salary" style="width: 500px;height: 25px">
+        <option selected="selected" value="0- $25000$">0 - $25000</option>
+        <option value="$25,001 - $50,000">$25,001 - $50,000</option>
+        <option value="$50,001 - $100,000">$50,001 - $100,000</option>
+        <option value="$100,000+">$100,000+</option>
+    </select> <br>
+    <label style="font-weight: bold">Gender</label><br>
+    <input type="radio">Male</input><br>
+    <input class="element" type="radio">Female</input><br>
+    <label style="font-weight: bold">Which of the following products have your purchased in the last 2 months. Please check all that apply.</label><br>
+    <input type="checkbox">Product 1</input><br>
+    <input type="checkbox">Product 2</input><br>
+    <input class="element" type="checkbox">Product 3</input><br>
+    <label style="font-weight: bold">How often would you use our new product?</label><br>
+    <input type="radio">Daily</input><br>
+    <input type="radio">Weekly</input><br>
+    <input class="element" type="radio">Monthly</input><br>
+    <label style="font-weight: bold ">What would you pay for the new product?</label><br>
+<div  style="border: none">
+    <table class="table1"  style="border: none" >
+        <tr>  <td> <label style="font-weight: bold; letter-spacing: 5px" >$</label></td>
+            <td><input style="width: 70px;letter-spacing: 100px" type="number">.</input></td>
+            <td><input style="width: 30px;letter-spacing: 100px" type="number"></input></td> <br>
+        </tr>
+        <tr> <td><td>Dollar</td></td>
+            <td>Cent</td>
+        </tr>
+    </table>
+    </div>
+
+    <label style="font-weight: bold">What features would you like to see in the new product.</label><br>
+    <textarea class="element" id="feedback" rows="10" cols="150"></textarea><br>
+    <label style="font-weight: bold">Please rate your level of agreement with the following questions.</label>
+    <div class="radio-box">
+        <table class="jk" >
+        <tr style="text-align: center; width: 200px">
+
+            <th></th>
+            <th>Strongly Disagree</th>
+            <th>Disagree</th>
+            <th>Agree</th>
+            <th>Strongly Agree</th>
+        </tr>
+        <tr>
+            <td><b>Our products are priced fairly.</b></td>
+            <td style="text-align: center"><input type="radio" >1</td>
+            <td style="text-align: center"><input type="radio">2</td>
+            <td style="text-align: center"><input type="radio">3</td>
+            <td style="text-align: center"><input  type="radio">4</td>
+        </tr>
+        <tr>
+            <td><b>Our products are high quality.</b></td>
+            <td style="text-align: center"><input type="radio">1</td>
+            <td style="text-align: center"><input type="radio">2</td>
+            <td style="text-align: center"><input type="radio">3</td>
+            <td style="text-align: center"><input  type="radio">4</td>
+
+        </tr>
+            <tr >
+                <td><b>You would recommend our product to a friend or coworker.</b></td>
+                <td style="text-align: center"><input type="radio">1</td>
+                <td style="text-align: center"><input type="radio">2</td>
+                <td style="text-align: center"><input type="radio">3</td>
+                <td style="text-align: center"><input  type="radio">4</td>
+
+            </tr>
+
+    </table> <br>
+    </div>
+    <input type="submit" value="Submit"></input>
+</form>
+
+
+</body>
+</html>

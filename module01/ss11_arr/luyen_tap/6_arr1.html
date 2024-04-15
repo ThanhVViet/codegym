@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập vào độ dài của mảng: ")
+    } while (n <= 0 || n > 10)
+    let arr = new Array(n);
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = prompt("Nhập vào phần tử thứ " + i)
+    }
+    let V = "5";
+    // nó thành string;
+    if (arr.includes(V)) {
+        alert("V is in the array")
+    } else {
+        alert("V is not in the array")
+    }
+</script>
+</body>
+</html>

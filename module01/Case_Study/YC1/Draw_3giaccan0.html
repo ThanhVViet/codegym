@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let h = prompt("Enter height :");
+    K = parseInt(h);
+    K = h - 1;
+    for (let i = 1; i <= h ; i++) {
+        for (let j = 1; j < 2 * h; j++) {
+            if (Math.abs(h - j) == i -1 || i == h) {
+                document.write("* ")
+            } else {
+                document.write("&nbsp&nbsp&nbsp")
+            }
+        }
+        document.write("<br/>");
+    }
+  //  for (let j = 1; j <= 2 * h - 1; j++) document.write("* ")
+</script>
+</body>
+</html>

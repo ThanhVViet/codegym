@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4_loop1</title>
+</head>
+<body>
+<script>
+  let n = prompt("Nhập số đầu tiên:")
+  let m = prompt("Nhập số kết thúc:")
+
+  let f1 = 0, f2 = 1 , fn;
+  while ((fn = f1 + f2) < n) {
+    f1 = f2;
+    f2 = fn;
+  }
+  while ((fn = f1 + f2) <= m) {
+    if (fn % 5 == 0){
+        document.write("Số đầu tiên trong dãy chia hết cho 5 là: " + fn)
+        break;
+    }
+      f1 = f2;
+      f2 = fn;
+  }
+</script>
+</body>
+</html>

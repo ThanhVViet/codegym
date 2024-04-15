@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function commonCharacterCount(s1, s2) {
+        let arrayOfS1 = s1.split("");
+        let arrayOfS2 = s2.split("");
+        let count = 0;
+        for (let i = 0; i < arrayOfS1.length; i++) {
+            for (let j = 0; j < arrayOfS2.length; j++) {
+                if (arrayOfS1[i] === arrayOfS2[j]) {
+                    count++;
+                    arrayOfS1.splice(i, 1);
+                    arrayOfS2.splice(j, 1);
+                    i--;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
+    let str1 = prompt("Input str 1:");
+    let str2 = prompt("Input str 2:");
+    alert("Total common character: " + commonCharacterCount(str1, str2))
+</script>
+</body>
+</html>

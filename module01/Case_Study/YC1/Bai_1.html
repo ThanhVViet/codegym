@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HCN</title>
+</head>
+<body>
+<script>
+    let a = prompt("Enter width: ");
+    let b = prompt("Enter length: ");
+    for (let i = 1; i <= a; i++) {
+        for (let j = 1; j <= b; j++) {
+            if (i == 1 || j == 1 || i == a || j == b) {
+                document.write("🥵 ")
+            } else {
+                document.write("&nbsp&nbsp&nbsp&nbsp&nbsp")
+            }
+        }
+        document.write("<br/>")
+    }
+</script>
+</body>
+</html>

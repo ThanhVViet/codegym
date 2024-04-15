@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let h = prompt("Enter height :");
+    for (let i = 1; i <= h; i++) {
+        for (let j = 1; j <= h; j++) {
+            if (j == i || j == 1 || i == h) {
+                document.write("* ")
+            } else {
+                document.write("&nbsp&nbsp&nbsp")
+            }
+        }
+        document.write("<br/>");
+    }
+</script>
+</body>
+</html>

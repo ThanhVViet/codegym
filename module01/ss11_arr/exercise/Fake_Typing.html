@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake_Typing</title>
+</head>
+<body>
+<form style=" position: absolute; left: 50% ; top: 50%; transform: translateX(-50%) translateY(-50%); ">
+  <h1 style="text-align: center">Type anthing slowly</h1>
+  <textarea oninput="faking()" id="area"  rows="20" cols="61"></textarea>
+</form>
+<script>
+  let mess = "Đuỹ póng ko loz ko dú 🥵 !!"
+  let length = mess.length;
+  let count = 0;
+  function faking() {
+    count++;
+    let str = mess.slice(0, count);
+    document.getElementById("area").value = str;
+    if (count > length) {
+      count = 0;
+    }
+  }
+</script>
+</body>
+</html>

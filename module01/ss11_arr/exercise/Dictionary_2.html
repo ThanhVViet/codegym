@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form style=" position: absolute; left: 50% ; top: 50%; transform: translateX(-50%) translateY(-50%); ">
+  <h1> Từ Điển Anh-Việt </h1>
+  <input id="k" placeholder="Nhập từ cần tìm" style="width: 250px; height: 30px;" type="text">
+  <button onclick="translates()" style="width: 60px; height: 30px" type="button">Tìm</button>
+  <p id="la"></p>
+</form>
+<script>
+  let eng = ["happy", "water", "cat"];
+  let v = ["vui vẻ", "nước", "mèo"];
+
+  function find() {
+    let keyword = document.getElementById("k").value;
+    for (let i = 0; i < eng.length; i++) {
+      if (eng[i] == keyword) return i;
+    }
+    return -1;
+  }
+
+  function translates() {
+    let i = find();
+    if (i == -1) {
+      document.getElementById("la").innerText = "Không tìm thấy từ phù hợp";
+    } else {
+      document.getElementById("la").innerText = "Từ tiếng việt tương ứng là: " + v[i];
+    }
+  }
+</script>
+</body>
+</html>

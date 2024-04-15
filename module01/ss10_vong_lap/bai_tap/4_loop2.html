@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4_loop2</title>
+</head>
+<body>
+<script>
+    let  a = prompt(" Nhập chiều dài: ")
+    let  b = prompt("Nhập chiều rộng: ")
+    for (let i = 1; i <= a; i++){
+        for (let j = 1; j <= b; j++){
+            if (i == 1 || j == 1 || i == a || j == b){
+                document.write("* ")
+            }else{
+                document.write("&nbsp&nbsp&nbsp")
+            }
+        }
+        document.write("<br/>")
+    }
+</script>
+</body>
+</html>

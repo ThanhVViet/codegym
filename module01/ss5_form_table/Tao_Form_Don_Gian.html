@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tao_Form_Ez</title>
+    <style>
+        .meo{
+            color: hotpink;
+        }
+        .www{
+            color: white;
+        }
+    table{
+
+        caption-side:top;
+    }
+    </style>
+</head>
+<body>
+
+<form method="post" action="url" style="align-content: center">
+    <table style="position: absolute; left: 50% ; top: 50%; transform: translateX(-50%) translateY(-50%)" bordercolor="grey">
+
+<!-- <caption style="background-color: aqua"> SỞ THÍCH CỦA BẠN </caption>-->
+        <tr>
+            <th colspan="2" style="background-color: lightcoral" class="www"> SỞ THÍCH CỦA BẠN</th>
+
+        </tr>
+
+
+            <tr>
+                <td> <p style="color:red">Your name:</p></td>
+                <td>
+                    <input style="width: 200px" type="text" value="" name="name"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="meo">Email:</td>
+                <td>
+                    <input type="text" value="" name="email"/>
+                </td>
+            </tr>
+            <tr>
+                <td><p style="color: chartreuse">Hobby:</p></td>
+                <td>
+                    <input type="checkbox" id="hobby1" name="hobby" value="thethao"> Thể Thao
+                    <input type="checkbox" id="hobby2" name="hobby2" value="Music">
+                    <label for="hobby2"> Âm nhạc </label>
+                    <input type="checkbox" id="hobby3" name="hobby3" value="Read">
+                    <label for="hobby3"> Đọc sách </label><br>
+                    <input type="checkbox" id="hobby4" name="hobby4" value="Search">
+                    <label for="hobby4"> Lướt web </label>
+                    <input type="checkbox" id="hobby5" name="hobby5" value="Play">
+                    <label for="hobby5"> Chơi game </label>
+                    <input type="checkbox" id="hobby6" name="hobby6" value="Movie">
+                    <label for="hobby6"> Điện ảnh </label><br>
+                    <input type="checkbox" id="hobby7" name="hobby7" value="Travel">
+                    <label for="hobby7"> Du lịch </label><br>
+                    <input type="submit" value="Submit"/>
+                    <input type="reset" value="Reset form"/>
+
+               </td>
+
+            </tr>
+
+        </table>
+</form>
+</body>
+</html>

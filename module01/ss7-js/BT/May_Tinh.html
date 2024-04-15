@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    .c{
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+<input type="text" id="t1" />
+<input class="c" type="text" id="t2" /><br>
+
+
+<button onclick="shinobu()" >Addition(+) </button>
+<button id="7" onclick="kochou()">Subtraction(-)</button>
+<button onclick="butter()">Multiplication(*)</button>
+<button class="c" onclick="mansion()">Division(/)</button><br>
+
+<label id="3">Result:</label>
+<SCRIPT>
+
+   function shinobu(){
+     let a = document.getElementById('t1').value;
+     let b = document.getElementById('t2').value;
+     let A=parseFloat(a);
+     let B = parseFloat(b);
+
+     let c = A+B;
+     document.getElementById('3').innerText= "Result Addition:" + c;
+
+   }
+   function kochou(){
+     let a = document.getElementById('t1').value;
+     let b = document.getElementById('t2').value;
+     let A=parseFloat(a);
+     let B = parseFloat(b);
+
+     let c = A-B;
+     document.getElementById('3').innerText= "Result Subtraction:" + c;
+
+   }
+   function butter(){
+     let a = document.getElementById('t1').value;
+     let b = document.getElementById('t2').value;
+     let A=parseFloat(a);
+     let B = parseFloat(b);
+
+     let c = A*B;
+     document.getElementById('3').innerText= "Result Multiplication:" + c;
+
+   }
+
+   function mansion(){
+     let a = document.getElementById('t1').value;
+     let b = document.getElementById('t2').value;
+     let A=parseFloat(a);
+     let B = parseFloat(b);
+
+     let c = A/B;
+     document.getElementById('3').innerText= "Result Division:" + c;
+
+   }
+
+</SCRIPT>
+
+
+
+</body>
+</html>

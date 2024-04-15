@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NTS</title>
+</head>
+<body>
+<script>
+ //  let n = +prompt ("Nhập số n: ");
+ //  let soTemp;
+ //  while(n != 0) {
+ //    soTemp = (soTemp * 10) + (n % 10);
+ //    n /= 10;
+ //  }
+ //
+ //  while(soTemp != 0) {
+ //    switch(soTemp % 10) {
+ //      case 0:
+ //        alert("Khong");
+ //        break;
+ //      case 1:
+ //        alert("Mot");
+ //        break;
+ //      case 2:
+ //        alert("Hai");
+ //        break;
+ //      case 3:
+ //        alert("Ba");
+ //        break;
+ //      case 4:
+ //        alert("Bon");
+ //        break;
+ //      case 5:
+ //        alert("Nam");
+ //        break;
+ //      case 6:
+ //        alert("Sau");
+ //        break;
+ //      case 7:
+ //        alert("Bay");
+ //        break;
+ //      case 8:
+ //        alert("Tam");
+ //        break;
+ //      case 9:
+ //        alert("Chin");
+ //        break;
+ //    }
+ //
+ //    soTemp = soTemp / 10;
+ //  }
+ //
+ // alert(n);
+  let arrayString = ["Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín"];
+  let number;
+  let stringOfNumber = "";
+  do {
+    number = prompt("Input number:");
+    if (!isNaN(Number(number)) && Number(number) > 0 && Number.isInteger(parseFloat(number))) {
+      break;
+    }
+  } while (true);
+  for (let i = 0; i < number.length; i++) {
+    stringOfNumber += arrayString[number[i]] + " ";
+  }
+  alert("Number: " + number + "\nNumber ( by string ): " + stringOfNumber);
+</script>
+</body>
+</html>

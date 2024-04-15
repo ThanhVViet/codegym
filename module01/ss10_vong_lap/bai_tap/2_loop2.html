@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2_loop2</title>
+</head>
+<body>
+<script>
+    let n, m = 1, i;
+    do {
+        n = prompt("Nhập vào số nguyên dương muốn tìm giai thừa");
+    } while (n <= 0);
+    for (i = 1; i <= n; i++) {
+        m *= i;
+    }
+    document.write(m)
+</script>
+</body>
+</html>

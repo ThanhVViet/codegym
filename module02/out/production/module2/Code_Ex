@@ -1,0 +1,197 @@
+// doc noi dung file
+
+public static void main(String[] args) throws IOException {
+
+        // Tạo một đối tượng InputStream: Luồng đọc một file.
+        InputStream is = new FileInputStream("CodeGym.txt");
+
+        int i = -1;
+
+        // Đọc lần lượt các byte (8bit) trong luồng và lưu vào biến i
+        // Khi đọc ra giá trị -1 nghĩa là kết thúc luồng.
+        while ((i = is.read()) != -1) {
+            System.out.println((char) i);
+        }
+        is.close();
+    }
+
+// Doc nhieu byte
+
+public static void main(String[] args) throws IOException {
+
+        // Tạo một luồng đầu vào bằng cách đọc một file
+        InputStream in = new FileInputStream("CodeGym.txt");
+
+        // Mảng để mỗi lần đọc các byte từ luồng thì tạm thời để lên đó
+        // Ta dùng mảng 10 byte
+
+        byte[] bytes = new byte[10];
+        int i = -1;
+
+        // Đọc các byte trong luồng và gán lên các phần tử của mảng.
+        // Giá trị i là số đọc được của 1 lần. (i sẽ <= 10).
+        // Khi không còn phần tử trong luồng i sẽ = -1
+        while ((i = in.read(bytes)) != -1) {
+            // Tạo String từ các byte đọc được
+            String s = new String(bytes, 0, i);
+            System.out.println(s);
+        }
+        in.close();
+    }
+
+// ghi noi dung ra file
+
+public static void main(String[] args) throws IOException {
+        // Tạo một luồng ký tự đầu ra với mục đích ghi thông tin vào file
+        OutputStream os = new FileOutputStream("output.txt");
+
+        // Tạo một mảng byte ,ta sẽ ghi các byte này vào file nói trên .
+        byte[] bytes = new byte[] { 'C', 'o', 'd', 'e', 'G', 'y', 'm' };
+
+        // Ghi lần lượt các ký tự vào luồng
+        for (int i = 0; i < bytes.length; i++) {
+            byte b = bytes[i];
+            // Ghi ký tự vào luồng
+            os.write(b);
+        }
+        // Đóng luồng đầu ra lại việc ghi xuống file hoàn tất.
+        os.close();
+    }
+
+     public static void main(String[] args) {
+    	        String pathFileInput =  "/Users/thanhviet/Documents/input.txt";
+    	        String pathFileError =   "/Users/thanhviet/Documents/error.txt";
+    	        setDatabase(pathFileInput, pathFileError);
+    	    }
+
+
+    	    private static void setDatabase(String pathFileInput, String pathFileError) {
+    	    	  // Đọc dữ liệu từ File với BufferedReader
+    	        BufferedReader bufferedReader = null;
+    	        BufferedWriter bufferedWriter = null;
+    	        try {
+
+    	            bufferedReader = new BufferedReader(new FileReader(pathFileInput));
+    	            bufferedWriter = new BufferedWriter(new FileWriter(pathFileError));
+
+    	            String line;
+    	            int numRow = 0;
+    	            while ((line = bufferedReader.readLine()) != null) {
+    	                numRow++;
+
+    	                boolean isValidMaHocVien = true;
+    	                boolean isValidTenHocVien = true;
+    	                boolean isValidNgaySinh = true;
+    	                boolean isValidGioiTinh = true;
+    	                boolean isValidDiemThi = true;
+
+    	                String maHocVien = "";
+    	                String tenHocVien = "";
+    	                Date ngaySinh = null;
+    	                String gioiTinh = "";
+    	                double diemThi = 0;
+
+    	                maHocVien = line.substring(0, 10);
+    	                tenHocVien = line.substring(10, 60);
+
+    	                try {
+    	                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    	                    java.util.Date temp = simpleDateFormat.parse(line.substring(60, 70));
+    	                    ngaySinh = new Date(temp.getTime());
+    	                } catch (ParseException e) {
+    	                    isValidNgaySinh = false;
+    	                }
+
+    	                gioiTinh = line.substring(70, 73);
+
+    	                try {
+    	                    diemThi = Double.parseDouble(line.substring(73, 77));
+    	                } catch (Exception e1) {
+    	                    isValidDiemThi = false;
+    	                }
+
+    	                if (!maHocVien.matches("^HV\\d{8}$"))
+    	                    isValidMaHocVien = false;
+    	                if (!tenHocVien.matches("^(\\w|\\s)+$"))
+    	                    isValidTenHocVien = false;
+    	                if (!gioiTinh.matches("(^Nam$|^Nu\\s$)"))
+    	                    isValidGioiTinh = false;
+
+    	                if(isValidMaHocVien && isValidTenHocVien && isValidNgaySinh && isValidGioiTinh && isValidDiemThi)
+    	                {
+    	                	try {
+
+    	                	Class.forName("com.mysql.jdbc.Driver");
+
+    	            		String url="jdbc:mysql://127.0.0.1:3306/dethamkhao";
+
+    	            		Connection con = DriverManager.getConnection(url,"root", "");
+
+    	            		Statement stmt = con.createStatement();
+    	                    String qr = "INSERT INTO `dethamkhao`.`HOCVIEN` (`MaHocVien` , `TenHocVien`, `NgaySinh`, `GioiTinh`, `DiemThi`) VALUES ('" + maHocVien + "', '" +  tenHocVien + "', '" + ngaySinh.toString() + "', '" + gioiTinh + "', '" + diemThi + "');";
+
+    	                     stmt.executeUpdate(qr);
+
+    	                } catch(Exception e) {
+    	                	System.err.format("Exception: %s%n", e);
+
+    	                }
+    	                }
+    	                else
+    	                {
+    	                    if(!isValidTenHocVien)
+    	                    {
+    	                        String messError = "Dong " + numRow + ": Sai dinh dang ten";
+    	                        bufferedWriter.write(messError);
+    	                        bufferedWriter.newLine();
+    	                    }
+    	                    if(!isValidMaHocVien)
+    	                    {
+    	                        String messError = "Dong " + numRow + ": Sai dinh dang ma hoc vien";
+    	                        bufferedWriter.write(messError);
+    	                        bufferedWriter.newLine();
+    	                    }
+    	                    if(!isValidNgaySinh)
+    	                    {
+    	                        String messError = "Dong " + numRow + ": Sai dinh dang ngay sinh";
+    	                        bufferedWriter.write(messError);
+    	                        bufferedWriter.newLine();
+    	                    }
+    	                    if(!isValidGioiTinh)
+    	                    {
+    	                        String messError = "Dong " + numRow + ": Sai dinh dang gioi tinh";
+    	                        bufferedWriter.write(messError);
+    	                        bufferedWriter.newLine();
+    	                    }
+    	                    if(!isValidDiemThi)
+    	                    {
+    	                        String messError = "Dong " + numRow + ": Sai dinh dang diem thi";
+    	                        bufferedWriter.write(messError);
+    	                        bufferedWriter.newLine();
+    	                    }
+    	                }
+
+    	            }
+    	        } catch (FileNotFoundException e) {
+    	            e.printStackTrace();
+    	        } catch (IOException e) {
+    	            e.printStackTrace();
+    	        }
+    	        finally
+    	        {
+    	            try
+    	            {
+    	                if (bufferedWriter != null)
+    	                {
+    	                    bufferedWriter.close();
+    	                }
+    	                if (bufferedReader != null)
+    	                {
+    	                    bufferedReader.close();
+    	                }
+    	            }
+    	            catch (IOException e)
+    	            {
+    	                e.printStackTrace();
+    	            }
+    	        }

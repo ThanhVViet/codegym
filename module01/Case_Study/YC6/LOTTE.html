@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input {
+            width: 100px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            border-radius: 10px;
+            margin-left: 47%;
+            margin-bottom: 2%;
+            text-align: center;
+        }
+
+        input:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align: center">VIETLOT</h2>
+<p style="text-align: center" id="lottery"></p>
+<button onclick="menu()">Buy lottery</button>
+<button id="1" onclick="displayPrize()">Check result</button>
+</body>
+<script>
+    document.getElementById("1").style.display = "none";
+
+    class Lottery {
+
+        constructor(number1, number2, number3, number4, number5, number6, award) {
+            this.number1 = number1;
+            this.number2 = number2;
+            this.number3 = number3;
+            this.number4 = number4;
+            this.number5 = number5;
+            this.number6 = number6;
+            this.award = award;
+        }
+
+        setNumber1(number) {
+            this.number1 = number;
+        }
+
+        getNumber1() {
+            return this.number1;
+        }
+
+        setNumber2(number) {
+            this.number2 = number;
+        }
+
+        getNumber2() {
+            return this.number2;
+        }
+
+        setNumber3(number) {
+            this.number3 = number;
+        }
+
+        getNumber3() {
+            return this.number3;
+        }
+
+        setNumber4(number) {
+            this.number4 = number;
+        }
+
+        getNumber4() {
+            return this.number4;
+        }
+
+        setNumber5(number) {
+            this.number5 = number;
+        }
+
+        getNumber5() {
+            return this.number5;
+        }
+
+        setNumber6(number) {
+            this.number6 = number;
+        }
+
+        getNumber6() {
+            return this.number6;
+        }
+
+        setAward(award) {
+            this.award = award;
+        }
+
+        getAward() {
+            return this.award;
+        }
+
+        setRandomNumber() {
+            this.setNumber1(Math.floor(Math.random() * 99));
+            this.setNumber2(Math.floor(Math.random() * 99));
+            this.setNumber3(Math.floor(Math.random() * 99));
+            this.setNumber4(Math.floor(Math.random() * 99));
+            this.setNumber5(Math.floor(Math.random() * 99));
+            this.setNumber6(Math.floor(Math.random() * 99));
+        }
+
+        getArrayNumber() {
+            return [this.number1, this.number2, this.number3, this.number4, this.number5, this.number6];
+        }
+
+        showInformation() {
+            return "The lottery: " + this.getArrayNumber().join(" ") + this.award;
+        }
+
+    }
+
+    let arrayLottery = [];
+    let arrayNumberWinPrize = [10, 9, 91, 29, 6, 20];
+
+    function displayLottery(arrayLottery) {
+        let lottery;
+        let str = "";
+        for (let i = 0; i < arrayLottery.length; i++) {
+            str += "<input readonly value ='" + arrayLottery[i].getNumber1() + "'>" +
+                "<input readonly value ='" + arrayLottery[i].getNumber2() + "'>" +
+                "<input readonly value ='" + arrayLottery[i].getNumber3() + "'>" +
+                "<input readonly value ='" + arrayLottery[i].getNumber4() + "'>" +
+                "<input readonly value ='" + arrayLottery[i].getNumber5() + "'>" +
+                "<input readonly value ='" + arrayLottery[i].getNumber6() + "'>" + "<br>"
+        }
+        document.getElementById("lottery").innerHTML = str;
+    }
+
+    function inputNumberToLottery() {
+        let arrayNumber = [];
+        let n = 1;
+        while (n < 7) {
+            let num = prompt("Input number " + n + ":");
+            if (!isNaN(Number(num)) && Number(num) >= 0 && Number(num) < 100 && Number.isInteger(parseFloat(num))) {
+                arrayNumber.push(parseInt(num));
+                n++;
+            }
+        }
+        let lottery = new Lottery(arrayNumber[0], arrayNumber[1], arrayNumber[2], arrayNumber[3], arrayNumber[4], arrayNumber[5]);
+        arrayLottery.push(lottery);
+        displayLottery(arrayLottery);
+    }
+
+    function randomNumber() {
+        let lottery = new Lottery();
+        lottery.setRandomNumber();
+        arrayLottery.push(lottery);
+        displayLottery(arrayLottery);
+    }
+
+    function checkLotteryWinPrize(lottery) {
+
+        let count = 0;
+        for (let i = 5; i >= 0; i--) {
+            if (arrayNumberWinPrize[i] === lottery.getArrayNumber()[i]) {
+                count++;
+            }
+        }
+        switch (count) {
+            case 6:
+                lottery.setAward(1);
+                break;
+            case 5:
+                lottery.setAward(2);
+                break;
+            case 4:
+            case 3:
+                lottery.setAward(3);
+                break;
+            default:
+                lottery.setAward(4);
+        }
+    }
+
+    function displayPrize() {
+        let result = "";
+        for (let i = 0; i < arrayLottery.length; i++) {
+            checkLotteryWinPrize(arrayLottery[i]);
+            switch (arrayLottery[i].getAward()) {
+                case 1:
+                    result += " The first prize.";
+                    break;
+                case 2:
+                    result += " The second prize.";
+                    break;
+                case 3:
+                    result += " The consolation prize";
+                    break;
+
+            }
+        }
+        if (result === "") {
+            alert("Winner lottery is " + arrayNumberWinPrize.join("-") + "\nGood luck next time.");
+        } else {
+            alert("Winner lottery is " + arrayNumberWinPrize.join("-") + "\nYou win:" + result);
+        }
+    }
+
+    function menu() {
+        let choose;
+        if (arrayLottery.length < 4) {
+            do {
+                choose = parseInt(prompt("Please choose below: \n" +
+                    "1. If you want to choose your number.\n" +
+                    "2. If you want to random your number."));
+                if (!isNaN(Number(choose)) && Number(choose) > 0 && Number(choose) < 3 && Number.isInteger(parseFloat(choose))) {
+                    break;
+                }
+            } while (true)
+        } else {
+            alert("The maximum you can buy is 4 lottery.");
+            return
+        }
+        document.getElementById("1").style.display = "block";
+        if (choose === 1) {
+            inputNumberToLottery();
+        } else {
+            randomNumber();
+        }
+
+    }
+</script>
+
+</html>

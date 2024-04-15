@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arrLength = +prompt('Bạn muốn nhập mảng dài bao nhiêu?');
+
+    function Create_Arr(arrlenght) {
+        let arr = [];
+        for (let i = 0; i < arrlenght; i++) {
+            arr[i] = +prompt('Nhập vào phần tử thứ ' + (i + 1));
+        }
+        return arr;
+    }
+
+    let arrNumbers = Create_Arr(arrLength);
+
+
+    function Find_primes(arr) {
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            let count = 0;
+            for (let n = 1; n < arr[i]; n++) {
+                if (arr[i] % n === 0) {
+                    count++;
+                }
+            }
+            if (count === 1) {
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+
+    let arrPrimes = Find_primes(arrNumbers);
+    arrPrimes.sort(function (a, b) {
+        return a - b;
+    })
+    if (arrPrimes.length === 0) {
+        alert('Mảng nhập vào không có số nguyên tố')
+    } else {
+        alert('Mảng gồm các số nguyên tố từ mảng ban đầu: ' + '[' + arrPrimes + ']');
+    }
+</script>
+</body>
+</html>

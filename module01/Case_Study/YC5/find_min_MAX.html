@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function findMaxAndMinInMatrix() {
+        let height = parseInt(prompt("Input row: "));
+        let width = parseInt(prompt("Input column: "));
+        let matrix = [];
+        let max = -Infinity;
+        let min = Infinity;
+        for (let i = 0; i < height; i++) {
+            matrix[i] = [];
+            for (let j = 0; j < width; j++) {
+                matrix[i][j] = parseInt(prompt("please input value a[" + i + "][" + j + "]"));
+                if (max < matrix[i][j]) {
+                    max = matrix[i][j];
+                }
+                if (matrix[i][j] < min) {
+                    min = matrix[i][j];
+                }
+            }
+        }
+        alert("Array: " + matrix + "\nMax in array: " + max + "\nMin in array: " + min);
+    }
+
+    findMaxAndMinInMatrix();
+</script>
+</body>
+</html>

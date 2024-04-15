@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập độ dài của mảng:");
+    } while (n <= 0 || n > 50)
+
+    let arrayA = new Array(n);
+
+    for (let i = 0; i < arrayA.length; i++) {
+        arrayA[i] = +prompt("Nhập phần tử thứ " + i);
+    }
+    alert(arrayA);
+
+    function isPrime(n) {
+        if (n < 2)
+            return false;
+        else {
+            for (let i = 2; i < n; i++)
+                if (n % i === 0)
+                    return false;
+            return true;
+        }
+    }
+
+    function newArray(arr) {
+        let arrayB = new Array();
+        for (let i = 0; i < arr.length; i++) {
+            if (isPrime(arr[i])) {
+                arrayB.push(arr[i]);
+            } else continue;
+        }
+        alert(arrayB);
+    }
+
+    newArray(arrayA);
+    alert(arrayB);
+</script>
+</body>
+</html>

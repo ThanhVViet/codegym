@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5</title>
+</head>
+<body>
+<script>
+    let arr1 = prompt("Mảng 1:")
+    let arr2 = prompt("Mảng 2:")
+
+    if (arr1.length !== arr2.length) {
+        alert("Không có cơ sở để so sánh");
+    } else {
+        alert("Đủ điều kiện so sánh");
+    }
+    // if (JSON.stringify(arr1) === JSON.stringify(arr2))
+    //     alert("Same")
+    // else {
+    //     alert("Not same")
+    // }
+    if (arr1.length == arr2.length) {
+        let nameArray1 = Array.from(arr1);
+        let nameArray2 = Array.from(arr2);
+
+        for (let i = 0; i < nameArray1.length; i++) {
+            if (nameArray1[i] == nameArray2[i]) {
+                alert("Giống chữ cái ở vị trí " + i)
+            } else {
+                alert("not same");
+                break;
+            }
+        }
+    }
+</script>
+</body>
+</html>
