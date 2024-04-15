@@ -1,0 +1,78 @@
+{
+  "product": [
+    {
+      "name": "alo",
+      "quantity": "12",
+      "date": "2023-12-31",
+      "from": "2023-12-30",
+      "to": "2023-12-31",
+      "category": 1,
+      "status": 1,
+      "id": 2
+    },
+    {
+      "name": "viet",
+      "quantity": " 2",
+      "date": "2024-01-02",
+      "from": "2024-01-02",
+      "to": "2024-01-05",
+      "category": "2",
+      "status": "1",
+      "id": 7
+    },
+    {
+      "name": "viet",
+      "quantity": " 2",
+      "date": "2024-01-02",
+      "from": "2024-01-02",
+      "to": "2024-01-05",
+      "category": "2",
+      "status": "1",
+      "id": 8
+    },
+    {
+      "name": "viet",
+      "quantity": " 2",
+      "date": "2024-01-02",
+      "from": "2024-01-02",
+      "to": "2024-01-05",
+      "category": "2",
+      "status": "1",
+      "id": 9
+    },
+    {
+      "name": "viet",
+      "quantity": " 2",
+      "date": "2024-01-02",
+      "from": "2024-01-02",
+      "to": "2024-01-05",
+      "category": "2",
+      "status": "1",
+      "id": 10
+    },
+    {
+      "name": "viet",
+      "quantity": " 2",
+      "date": "2024-01-02",
+      "from": "2024-01-02",
+      "to": "2024-01-05",
+      "category": "2",
+      "status": "1",
+      "id":11
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "nameCategory": "phone"
+    },
+    {
+      "id": 2,
+      "nameCategory": "mac"
+    },
+    {
+      "id": 3,
+      "nameCategory": "tv"
+    }
+  ]
+}

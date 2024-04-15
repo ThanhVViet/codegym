@@ -1,0 +1,42 @@
+{
+  "product": [
+    {
+      "name": " v1",
+      "quantity": " 20",
+      "current": "2024-01-08",
+      "date": "2024-01-08",
+      "category": "2",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": " v2",
+      "current": "2024-01-08",
+      "quantity": "11",
+      "date": "2024-01-08",
+      "category": "3"
+    },
+    {
+      "id": 3,
+      "name": " gg",
+      "current": "2024-01-08",
+      "quantity": "30 ",
+      "date": "2024-01-07",
+      "category": 1
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "nameCategory": "T-Shirt"
+    },
+    {
+      "id": 2,
+      "nameCategory": "Jacket"
+    },
+    {
+      "id": 3,
+      "nameCategory": "1"
+    }
+  ]
+}

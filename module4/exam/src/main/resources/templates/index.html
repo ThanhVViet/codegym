@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+            crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="image/x-icon" href="/image/favicon_io/clown.png">
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/webjars/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+    <style>
+        .meo {
+            /*text-align: center;*/
+            /*margin: 0 auto;*/
+            margin-left: 20px;
+
+            .has-error {
+                color: red;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1 class="text-center">Danh sách câu hỏi</h1>
+
+
+<section>
+    <div class="add">
+        <a class="btn btn-info" href="/create"> Tạo câu hỏi</a>
+    </div>
+    <form action="/home" class="search-container" method="get">
+        <input th:value="${searchName}" name="searchName" type="text" id="search-bar" placeholder="Search ...">
+        <input class="btn btn-outline-success" type="submit" value="Search">
+
+    </form>
+
+
+</section>
+<br/>
+<section class="meo">
+    <form id="fi" action="/home" class="search-container" method="get">
+        <select id="key" style="height: 50px; width: 60%" class="form-select form-control"
+                required="required" name="key" onchange="document.getElementById('fi').submit()">
+            <option value="0" th:selected="${key == 0}">All</option>
+            <th:block th:each="c : ${categories}">
+                <option th:selected="${c.id == key}" th:value="${c.id}" th:text="${c.name}"></option>
+            </th:block>
+        </select>
+    </form>
+</section>
+
+
+<br/>
+<table id="blogs">
+    <div th:if="${!blogs.isEmpty()}">
+        <thead>
+        <tr>
+            <th class="text-center">STT</th>
+            <th class="text-center">Tiêu đề</th>
+            <th class="text-center">Loại câu hỏi</th>
+            <th class="text-center">Ngày đăng</th>
+            <th class="text-center">Tình trạng</th>
+            <th class="text-center">Xoá</th>
+            <th class="text-center">Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="blog,rowStat : ${blogs}">
+            <td th:text="${rowStat.count}"></td>
+            <td th:text="${blog.title}"></td>
+            <td th:text="${blog.type.name}"></td>
+            <td th:text="${blog.date}"></td>
+            <td th:switch="${blog.status}">
+                <span th:case="1" th:text="Chưa"></span>
+                <span th:case="0" th:text="Đã"></span>
+                <span th:case="*" th:text="Khác"></span>
+            </td>
+
+            <td class="text-center"><a th:onclick="|del(${blog.id})|" class="btn btn-danger" data-bs-toggle="modal"
+                                       data-bs-target="#deleteModal">
+                Delete
+            </a></td>
+
+
+            <td class="text-center">
+                <button th:data-id="${blog.id}" th:data-title="${blog.title}" th:data-content="${blog.content}"
+                        th:data-date="${blog.date}" th:data-type="${blog.type.name}"
+                        th:data-status="${blog.status}"
+                        class="btn btn-success edit" data-bs-toggle="modal" data-bs-target="#edit">Detail
+                </button>
+            </td>
+
+            <td class="text-center">
+
+            </td>
+        </tr>
+        </tbody>
+    </div>
+</table>
+<div class="alert alert-warning text-center" role="alert" th:if="${blogs.isEmpty()}">
+    Cann't find what you're looking for !!! Please try agian !!
+</div>
+
+
+<br/>
+
+
+<div class="page">
+    <a th:if="${blogs.hasPrevious()}"
+       th:href="@{/home(page=${blogs.number+(-1)},searchName=${searchName},key=${key})}">Previous</a>
+    <span th:text="${blogs.number+1}"></span>/<span th:text="${blogs.totalPages}"></span>
+    <a th:if="${blogs.hasNext()}"
+       th:href="@{/home(page=${blogs.number+1},searchName=${searchName},key=${key})}">Next</a>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" action="/delete">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tlName">Delete Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có muốn xoá câu hỏi này không ?
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="id" id="hdId">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                    <button type="submit" class="btn btn-danger">Có</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form method="post" action="/create">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Xem chi tiết câu hỏi</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Tiểu đề</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" disabled name="title">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Nội dung</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" disabled name="content">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Ngày đăng </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" disabled name="date">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Loại câu hỏi</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" disabled name="type">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">Tình trạng</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" disabled name="status">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script>
+
+
+    function change() {
+        document.getElementById("fi").submit();
+    }
+
+    function del(id, name) {
+        document.getElementById("hdId").value = id;
+    }
+
+    function fncSearch(val) {
+        document.getElementById("aSearch").href = "/blog?q=" + val;
+    }
+
+    $(".edit").click(function () {
+
+        $("input[name='id']").val($(this).data("id"));
+        $("input[name='title']").val($(this).data("title"));
+        $("input[name='content']").val($(this).data("content"));
+        $("input[name='type']").val($(this).data("type"));
+        $("input[name='date']").val($(this).data("date"));
+        $("input[name='status']").val($(this).data("status"));
+    });
+
+</script>
+
+<script src="/js/script_index.js">
+</script>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+{
+  "product": [
+    {
+      "id": 3,
+      "name": " v2",
+      "quantity": " 20",
+      "date": "2024-01-05",
+      "from": "2024-01-05",
+      "to": "2024-01-06",
+      "category": "3",
+      "status": "1"
+    },
+    {
+      "id": 4,
+      "name": " ggg",
+      "quantity": " 100",
+      "date": "2024-01-24",
+      "from": "2024-01-24",
+      "to": "2024-01-28",
+      "category": "2",
+      "status": "1"
+    },
+    {
+      "name": " alo2",
+      "quantity": " 1",
+      "date": "2024-02-06",
+      "from": "2024-02-06",
+      "to": "2024-02-06",
+      "category": 1,
+      "status": "1",
+      "id": 5
+    },
+    {
+      "name": " alo2",
+      "quantity": " 10",
+      "date": "2024-02-07",
+      "from": "2024-02-07",
+      "to": "2024-02-07",
+      "category": 1,
+      "status": "1",
+      "id": 6
+    },
+    {
+      "name": " alo1",
+      "quantity": " 10",
+      "date": "2024-02-12",
+      "from": "2024-02-12",
+      "to": "2024-02-12",
+      "category": 1,
+      "status": "1",
+      "id": 7
+    },
+    {
+      "name": " alo1",
+      "quantity": " 10",
+      "date": "2024-02-12",
+      "from": "2024-02-12",
+      "to": "2024-02-12",
+      "category": "2",
+      "status": "1",
+      "id": 8
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "nameCategory": "phone"
+    },
+    {
+      "id": 2,
+      "nameCategory": "mac"
+    },
+    {
+      "id": 3,
+      "nameCategory": "tv"
+    }
+  ]
+}
